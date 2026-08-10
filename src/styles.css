@@ -1,34 +1,80 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 
+/*
+  InovaCore design tokens (Tailwind v4 @theme)
+  -------------------------------------------
+  Brand: logo cyan → deep blue on navy ink.
+  Surfaces: cool light grey page, white cards, navy heroes/footer.
+  Change colours here only — components should use semantic classes.
+*/
+
 @theme {
-  /* Brand-aligned with InovaCore logo: cyan → deep blue on navy */
+  /* --- Surfaces (light app chrome) --- */
   --color-bg: #f0f5fa;
   --color-bg-elevated: #ffffff;
   --color-bg-subtle: #e4edf6;
+
+  /* --- Text on light --- */
   --color-fg: #1e293b;
   --color-fg-muted: #475569;
   --color-fg-subtle: #64748b;
+
+  /* --- Borders --- */
   --color-border: #d1dbe8;
   --color-border-strong: #b6c4d6;
+
+  /* --- Brand accent (buttons, links, icons) --- */
   --color-accent: #0c6099;
   --color-accent-hover: #094d7a;
   --color-accent-fg: #ffffff;
-  --color-ink: #0b0628;
   --color-ring: #0c6099;
-  --color-brand-cyan: #34ecf6;
 
+  /* --- Dark brand surfaces (hero, header top, footer) --- */
+  --color-ink: #0b0628;
+  --color-ink-elevated: #120a38;
+  --color-ink-border: rgb(255 255 255 / 0.12);
+
+  /* --- Text / accents on dark --- */
+  --color-on-ink: #ffffff;
+  --color-on-ink-muted: rgb(255 255 255 / 0.75);
+  --color-on-ink-subtle: rgb(255 255 255 / 0.55);
+  --color-on-ink-accent: #7dd3fc; /* sky-300-ish for eyebrows on dark */
+
+  /* --- Logo cyan (highlights, glows) --- */
+  --color-brand-cyan: #34ecf6;
+  --color-brand-glow: rgb(4 107 210 / 0.45);
+
+  /* --- Typography --- */
   --font-display: "Plus Jakarta Sans", "DM Sans", ui-sans-serif, system-ui,
     sans-serif;
   --font-sans: "DM Sans", ui-sans-serif, system-ui, -apple-system, sans-serif;
 
+  /* --- Radius --- */
   --radius-sm: 0.5rem;
   --radius-md: 0.75rem;
   --radius-lg: 1rem;
   --radius-xl: 1.5rem;
 
+  /* --- Elevation --- */
   --shadow-soft: 0 1px 2px rgb(11 6 40 / 0.04),
     0 10px 28px rgb(11 6 40 / 0.06);
+  --shadow-hero: 0 25px 50px -12px rgb(11 6 40 / 0.45);
+}
+
+/* Raw CSS variables for non-Tailwind use (gradients, mix, etc.) */
+:root {
+  --hero-glow: radial-gradient(
+    ellipse 80% 60% at 70% 40%,
+    var(--color-brand-glow),
+    transparent 60%
+  );
+  --header-dark-bg: color-mix(in oklab, var(--color-ink) 85%, transparent);
+  --header-light-bg: color-mix(
+    in oklab,
+    var(--color-bg-elevated) 95%,
+    transparent
+  );
 }
 
 @layer base {
@@ -68,16 +114,70 @@
   }
 }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
-
+@layer components {
+  /* Page shell width */
   .container-page {
     @apply mx-auto w-full max-w-6xl px-5 sm:px-8;
   }
 
   .section-pad {
     @apply py-16 sm:py-24;
+  }
+
+  /*
+    Dark brand band — homepage hero, PageHero, footer-adjacent CTAs.
+    Keeps navy + glow consistent without per-page hardcoded rgba.
+  */
+  .surface-ink {
+    @apply relative overflow-hidden bg-ink text-on-ink;
+  }
+
+  .surface-ink::before {
+    content: "";
+    pointer-events: none;
+    position: absolute;
+    inset: 0;
+    opacity: 0.4;
+    background: var(--hero-glow);
+  }
+
+  .surface-ink > * {
+    position: relative;
+  }
+
+  .surface-ink-eyebrow {
+    @apply mb-3 text-xs font-semibold uppercase tracking-[0.16em] text-on-ink-accent;
+  }
+
+  .surface-ink-title {
+    @apply max-w-3xl font-display font-semibold tracking-tight text-balance text-on-ink;
+  }
+
+  .surface-ink-body {
+    @apply mt-4 max-w-2xl text-base leading-relaxed text-on-ink-muted sm:text-lg;
+  }
+
+  /* Alternating light sections */
+  .surface-page {
+    @apply bg-bg text-fg;
+  }
+
+  .surface-elevated {
+    @apply bg-bg-elevated text-fg;
+  }
+
+  .surface-subtle {
+    @apply bg-bg-subtle text-fg;
+  }
+
+  /* Cards on light backgrounds */
+  .card-surface {
+    @apply rounded-xl border border-border bg-bg-elevated shadow-soft;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
   }
 }

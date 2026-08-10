@@ -40,32 +40,19 @@ function Home() {
   return (
     <SiteShell>
       {/* 1. Hero */}
-      <section className="relative overflow-hidden border-b border-border bg-ink text-white">
-        <div
-          className="pointer-events-none absolute inset-0 opacity-40"
-          style={{
-            background:
-              "radial-gradient(ellipse 80% 60% at 70% 40%, rgba(4,107,210,0.45), transparent 60%)",
-          }}
-        />
-        <div className="container-page relative grid items-center gap-10 py-16 sm:py-20 lg:grid-cols-12 lg:gap-12 lg:py-24">
+      <section className="surface-ink border-b border-ink-border">
+        <div className="container-page grid items-center gap-10 py-16 sm:py-20 lg:grid-cols-12 lg:gap-12 lg:py-24">
           <div className="lg:col-span-6">
-            <p className="mb-4 text-xs font-semibold uppercase tracking-[0.16em] text-sky-300/90">
-              Infrastructure & cloud
-            </p>
-            <h1 className="font-display text-4xl font-semibold leading-[1.12] tracking-tight text-balance sm:text-5xl lg:text-[3.15rem]">
+            <p className="surface-ink-eyebrow">Infrastructure & cloud</p>
+            <h1 className="surface-ink-title text-4xl leading-[1.12] sm:text-5xl lg:text-[3.15rem]">
               IT infrastructure & cloud solutions that actually work
             </h1>
-            <p className="mt-5 max-w-xl text-base leading-relaxed text-white/75 sm:text-lg">
+            <p className="surface-ink-body">
               We help growing businesses design, secure, and scale their IT —
               without complexity, downtime, or guesswork.
             </p>
             <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center">
-              <Button
-                asChild
-                size="lg"
-                className="bg-accent text-accent-fg hover:bg-accent/90"
-              >
+              <Button asChild size="lg">
                 <Link to="/contact">
                   Book a consultation
                   <ArrowRight className="size-4" />
@@ -75,14 +62,14 @@ function Home() {
                 asChild
                 size="lg"
                 variant="secondary"
-                className="border-white/20 bg-white/10 text-white hover:bg-white/15"
+                className="border-white/20 bg-white/10 text-on-ink hover:bg-white/15 hover:text-on-ink"
               >
                 <Link to="/contact">Get a quote</Link>
               </Button>
             </div>
           </div>
           <div className="lg:col-span-6">
-            <div className="overflow-hidden rounded-xl border border-white/10 shadow-2xl">
+            <div className="overflow-hidden rounded-xl border border-ink-border shadow-hero">
               <img
                 src="/hero.jpg"
                 alt="Infrastructure and cloud technology environment"
@@ -97,7 +84,7 @@ function Home() {
       </section>
 
       {/* 2. Trust bar */}
-      <section className="border-b border-border bg-bg-elevated">
+      <section className="border-b border-border surface-elevated">
         <div className="container-page flex flex-col gap-4 py-6 sm:flex-row sm:items-center sm:justify-between">
           <p className="text-sm font-medium text-fg">
             Trusted by businesses across the UK
@@ -111,7 +98,7 @@ function Home() {
       </section>
 
       {/* 3. Services */}
-      <section className="section-pad" aria-labelledby="services-heading">
+      <section className="section-pad surface-page" aria-labelledby="services-heading">
         <div className="container-page">
           <div className="max-w-2xl">
             <p className="text-xs font-semibold uppercase tracking-[0.16em] text-accent">
@@ -132,10 +119,7 @@ function Home() {
             {services.map((s, i) => {
               const Icon = SERVICE_ICONS[i % SERVICE_ICONS.length];
               return (
-                <article
-                  key={s.slug}
-                  className="rounded-xl border border-border bg-bg-elevated p-6 shadow-soft"
-                >
+                <article key={s.slug} className="card-surface p-6">
                   <div className="mb-4 inline-flex h-11 w-11 items-center justify-center rounded-md border border-border bg-bg">
                     <Icon className="size-5 text-accent" strokeWidth={1.75} />
                   </div>
@@ -164,7 +148,7 @@ function Home() {
       </section>
 
       {/* 4. Why choose us */}
-      <section className="section-pad border-t border-border bg-bg-elevated">
+      <section className="section-pad border-t border-border surface-elevated">
         <div className="container-page grid gap-10 lg:grid-cols-12">
           <div className="lg:col-span-5">
             <p className="text-xs font-semibold uppercase tracking-[0.16em] text-accent">
@@ -173,11 +157,9 @@ function Home() {
             <h2 className="mt-3 font-display text-3xl font-semibold tracking-tight text-ink sm:text-4xl">
               Built for more complex environments
             </h2>
-            <p className="mt-4 text-fg-muted">
-              {company.positioning}
-            </p>
+            <p className="mt-4 text-fg-muted">{company.positioning}</p>
           </div>
-          <ul className="lg:col-span-7 grid gap-3 sm:grid-cols-2">
+          <ul className="grid gap-3 sm:grid-cols-2 lg:col-span-7">
             {whyUs.map((item) => (
               <li
                 key={item}
@@ -194,8 +176,8 @@ function Home() {
         </div>
       </section>
 
-      {/* 5. Credibility / experience */}
-      <section className="section-pad" aria-labelledby="cred-heading">
+      {/* 5. Credibility */}
+      <section className="section-pad surface-page" aria-labelledby="cred-heading">
         <div className="container-page">
           <div className="max-w-2xl">
             <p className="text-xs font-semibold uppercase tracking-[0.16em] text-accent">
@@ -215,10 +197,7 @@ function Home() {
           </div>
           <div className="mt-12 grid gap-5 lg:grid-cols-3">
             {projects.slice(0, 3).map((p) => (
-              <article
-                key={p.title}
-                className="flex flex-col rounded-xl border border-border bg-bg-elevated p-6 shadow-soft"
-              >
+              <article key={p.title} className="card-surface flex flex-col p-6">
                 <h3 className="font-display text-xl font-semibold leading-snug text-ink">
                   {p.title}
                 </h3>
@@ -247,17 +226,14 @@ function Home() {
       </section>
 
       {/* Social proof */}
-      <section className="section-pad border-t border-border bg-bg-elevated">
+      <section className="section-pad border-t border-border surface-elevated">
         <div className="container-page">
           <h2 className="font-display text-2xl font-semibold tracking-tight text-ink sm:text-3xl">
             What clients value
           </h2>
           <div className="mt-10 grid gap-5 md:grid-cols-3">
             {testimonials.map((t) => (
-              <blockquote
-                key={t.author + t.context}
-                className="rounded-xl border border-border bg-bg p-6 shadow-soft"
-              >
+              <blockquote key={t.author + t.context} className="card-surface p-6">
                 <Quote
                   className="mb-4 size-6 text-accent/40"
                   strokeWidth={1.5}
@@ -301,7 +277,7 @@ function Home() {
               asChild
               size="lg"
               variant="secondary"
-              className="border-white/30 bg-transparent text-white hover:bg-white/10"
+              className="border-white/30 bg-transparent text-white hover:bg-white/10 hover:text-white"
             >
               <Link to="/contact">Get a quote</Link>
             </Button>
@@ -310,7 +286,7 @@ function Home() {
       </section>
 
       {/* Founder strip */}
-      <section className="section-pad">
+      <section className="section-pad surface-page">
         <div className="container-page grid gap-8 lg:grid-cols-12 lg:items-center">
           <div className="lg:col-span-7">
             <p className="text-xs font-semibold uppercase tracking-[0.16em] text-accent">
@@ -330,7 +306,7 @@ function Home() {
             </div>
           </div>
           <div className="lg:col-span-5">
-            <div className="rounded-xl border border-border bg-bg-elevated p-6 shadow-soft">
+            <div className="card-surface p-6">
               <div className="mb-4 flex h-14 w-14 items-center justify-center rounded-full bg-accent/10 font-display text-lg font-semibold text-accent">
                 WG
               </div>

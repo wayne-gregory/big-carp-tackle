@@ -46,12 +46,17 @@ export function SiteHeader() {
   return (
     <header
       className={cn(
-        "sticky top-0 z-40 border-b transition-colors duration-200",
+        "sticky top-0 z-40 border-b transition-colors duration-200 backdrop-blur-sm",
         onDark
-          ? "border-white/10 bg-ink/85 text-white backdrop-blur-sm"
-          : "border-border bg-bg-elevated/95 backdrop-blur-md",
+          ? "border-ink-border text-on-ink"
+          : "border-border bg-bg-elevated/95",
       )}
-      style={{ paddingTop: "var(--grok-banner-h, 0px)" }}
+      style={{
+        paddingTop: "var(--grok-banner-h, 0px)",
+        backgroundColor: onDark
+          ? "var(--header-dark-bg)"
+          : "var(--header-light-bg)",
+      }}
     >
       <div className="container-page flex h-16 items-center justify-between gap-4">
         <Logo
@@ -69,7 +74,7 @@ export function SiteHeader() {
               className={cn(
                 "text-sm font-medium transition-colors [&.active]:font-semibold",
                 onDark
-                  ? "text-white/80 hover:text-white [&.active]:text-sky-300"
+                  ? "text-on-ink-muted hover:text-on-ink [&.active]:text-on-ink-accent"
                   : "text-fg-muted hover:text-fg [&.active]:text-accent",
               )}
               activeProps={{ className: "active" }}
@@ -91,7 +96,7 @@ export function SiteHeader() {
           className={cn(
             "inline-flex h-11 w-11 items-center justify-center rounded-md border md:hidden",
             onDark
-              ? "border-white/20 bg-white/10 text-white"
+              ? "border-ink-border bg-white/10 text-on-ink"
               : "border-border bg-bg-elevated text-fg",
           )}
           aria-label={open ? "Close menu" : "Open menu"}
