@@ -12,6 +12,7 @@ import { SiteShell } from "@/components/site/shell";
 import { Button } from "@/components/ui/button";
 import {
   company,
+  packages,
   platforms,
   projects,
   services,
@@ -64,7 +65,7 @@ function Home() {
                 variant="secondary"
                 className="border-white/20 bg-white/10 text-on-ink hover:bg-white/15 hover:text-on-ink"
               >
-                <Link to="/contact">Get a quote</Link>
+                <Link to="/services">View packages</Link>
               </Button>
             </div>
           </div>
@@ -96,11 +97,62 @@ function Home() {
         </div>
       </section>
 
-      <section className="section-pad surface-page" aria-labelledby="services-heading">
+      {/* Packages teaser */}
+      <section className="section-pad surface-page" aria-labelledby="pkg-heading">
+        <div className="container-page">
+          <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
+            <div className="max-w-2xl">
+              <p className="text-xs font-semibold uppercase tracking-[0.16em] text-accent">
+                Packages
+              </p>
+              <h2
+                id="pkg-heading"
+                className="mt-3 font-display text-3xl font-semibold tracking-tight text-ink sm:text-4xl"
+              >
+                Three clear ways to start
+              </h2>
+              <p className="mt-3 text-fg-muted">
+                Named engagements with a defined outcome — price confirmed after
+                a short conversation about size and complexity.
+              </p>
+            </div>
+            <Button asChild variant="secondary" className="shrink-0">
+              <Link to="/services">
+                Full details
+                <ArrowRight className="size-4" />
+              </Link>
+            </Button>
+          </div>
+          <div className="mt-10 grid gap-5 md:grid-cols-3">
+            {packages.map((pkg) => (
+              <article key={pkg.slug} className="card-surface flex flex-col p-6">
+                <h3 className="font-display text-lg font-semibold text-ink">
+                  {pkg.name}
+                </h3>
+                <p className="mt-2 text-sm leading-relaxed text-fg-muted">
+                  {pkg.tagline}
+                </p>
+                <p className="mt-4 text-xs font-medium uppercase tracking-wider text-fg-subtle">
+                  You leave with
+                </p>
+                <p className="mt-1.5 flex-1 text-sm text-fg">{pkg.outcome}</p>
+                <Button asChild variant="secondary" size="sm" className="mt-6">
+                  <Link to="/contact">Enquire</Link>
+                </Button>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section
+        className="section-pad border-t border-border surface-elevated"
+        aria-labelledby="services-heading"
+      >
         <div className="container-page">
           <div className="max-w-2xl">
             <p className="text-xs font-semibold uppercase tracking-[0.16em] text-accent">
-              Services
+              Capabilities
             </p>
             <h2
               id="services-heading"
@@ -131,21 +183,18 @@ function Home() {
               );
             })}
           </div>
-          <div className="mt-10 flex flex-col gap-3 sm:flex-row">
+          <div className="mt-10">
             <Button asChild variant="secondary">
               <Link to="/services">
                 View all services
                 <ArrowRight className="size-4" />
               </Link>
             </Button>
-            <Button asChild variant="ghost">
-              <Link to="/microsoft-365">Microsoft 365 Business Premium</Link>
-            </Button>
           </div>
         </div>
       </section>
 
-      <section className="section-pad border-t border-border surface-elevated">
+      <section className="section-pad border-t border-border surface-page">
         <div className="container-page grid gap-10 lg:grid-cols-12">
           <div className="lg:col-span-5">
             <p className="text-xs font-semibold uppercase tracking-[0.16em] text-accent">
@@ -160,7 +209,7 @@ function Home() {
             {whyUs.map((item) => (
               <li
                 key={item}
-                className="flex gap-3 rounded-xl border border-border bg-bg p-4 text-sm text-fg"
+                className="flex gap-3 rounded-xl border border-border bg-bg-elevated p-4 text-sm text-fg"
               >
                 <span
                   className="mt-1.5 size-1.5 shrink-0 rounded-full bg-accent"
@@ -173,7 +222,7 @@ function Home() {
         </div>
       </section>
 
-      <section className="section-pad surface-page" aria-labelledby="cred-heading">
+      <section className="section-pad border-t border-border surface-elevated" aria-labelledby="cred-heading">
         <div className="container-page">
           <div className="max-w-2xl">
             <p className="text-xs font-semibold uppercase tracking-[0.16em] text-accent">
@@ -185,10 +234,6 @@ function Home() {
             >
               Outcomes that protect uptime and productivity
             </h2>
-            <p className="mt-4 text-base text-fg-muted sm:text-lg">
-              Real estates, real constraints — virtualisation, hybrid cloud, DR,
-              and Microsoft platforms with plans the business can follow.
-            </p>
           </div>
           <div className="mt-12 grid gap-5 lg:grid-cols-3">
             {projects.slice(0, 3).map((p) => (
@@ -199,16 +244,6 @@ function Home() {
                 <p className="mt-3 flex-1 text-sm leading-relaxed text-fg-muted">
                   {p.summary}
                 </p>
-                <div className="mt-5 flex flex-wrap gap-2">
-                  {p.tags.map((t) => (
-                    <span
-                      key={t}
-                      className="rounded-full border border-border bg-bg px-2.5 py-1 text-xs font-medium text-fg-muted"
-                    >
-                      {t}
-                    </span>
-                  ))}
-                </div>
               </article>
             ))}
           </div>
@@ -220,7 +255,7 @@ function Home() {
         </div>
       </section>
 
-      <section className="section-pad border-t border-border surface-elevated">
+      <section className="section-pad border-t border-border surface-page">
         <div className="container-page">
           <h2 className="font-display text-2xl font-semibold tracking-tight text-ink sm:text-3xl">
             What clients value
@@ -252,8 +287,8 @@ function Home() {
             Ready for IT that performs under pressure?
           </h2>
           <p className="mx-auto mt-4 max-w-xl text-accent-fg/80">
-            Book a consultation — performance issues, resilience gaps, cloud
-            moves, or Business Premium done properly.
+            Pick a package or tell us what is painful — we will suggest a
+            practical next step.
           </p>
           <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
             <Button
@@ -272,7 +307,7 @@ function Home() {
               variant="secondary"
               className="border-white/30 bg-transparent text-white hover:bg-white/10 hover:text-white"
             >
-              <Link to="/contact">Get a quote</Link>
+              <Link to="/services">View packages</Link>
             </Button>
           </div>
         </div>
@@ -306,8 +341,8 @@ function Home() {
                 Specialist, not a generic helpdesk
               </p>
               <p className="mt-2 text-sm text-fg-muted">
-                Infrastructure problems, cloud design, and Microsoft estates —
-                someone worth contacting when DIY stops working.
+                Works with internal IT and MSPs when estates need senior
+                infrastructure or Microsoft expertise.
               </p>
             </div>
           </div>

@@ -20,7 +20,81 @@ export const company = {
   ],
 } as const;
 
-/** Core service cards — aligned to conversion brief (5 focus areas). */
+/**
+ * Named entry packages — fixed scope, clear outcomes, consultation to price.
+ * Not an MSP retainer; specialist engagements growing firms can buy.
+ */
+export const packages = [
+  {
+    slug: "infra-health-check",
+    name: "Infrastructure Health Check",
+    tagline: "Know what is slow, fragile, or overdue — and what to fix first.",
+    bestFor:
+      "Businesses with VMware or mixed server estates that feel unpredictable, slow, or hard to support.",
+    duration: "Typically 2–4 days on-site / remote",
+    outcome:
+      "A prioritised action plan with capacity, performance, and risk findings you can act on — or hand to an MSP.",
+    includes: [
+      "Discovery of hosts, storage, networking, and critical workloads",
+      "Performance and capacity review (where bottlenecks really are)",
+      "Lifecycle and version risk (what is unsupported or overdue)",
+      "Backup / recovery posture snapshot for core systems",
+      "Written findings + ranked recommendations (quick wins vs projects)",
+      "Optional walkthrough with your IT lead or MSP",
+    ],
+    notIncluded: [
+      "Remediation work (quoted separately if you want us to implement)",
+      "24/7 monitoring or helpdesk cover",
+    ],
+  },
+  {
+    slug: "business-premium-launch",
+    name: "Business Premium Launch",
+    tagline: "Secure, usable Microsoft 365 — set up for how your people work.",
+    bestFor:
+      "Growing firms on or moving to Microsoft 365 Business Premium who need email, devices, and security done properly.",
+    duration: "Sized to user count and migration complexity",
+    outcome:
+      "Staff on Business Premium with MFA, sensible device policy, and clear admin ownership — without enterprise bloat.",
+    includes: [
+      "Licence fit check (Business Premium vs cheaper/higher SKUs)",
+      "Tenant baseline: identity, MFA, conditional access fundamentals",
+      "Mailbox / files / Teams migration plan and cutover support",
+      "Intune device standards for laptops and mobiles (right-sized)",
+      "SharePoint / Teams structure that people can actually find work in",
+      "Handover notes: who administers what day to day",
+    ],
+    notIncluded: [
+      "Ongoing 1st-line helpdesk (we can advise your MSP or internal IT)",
+      "Full E3/E5 enterprise transformation programmes",
+    ],
+    href: "/microsoft-365" as const,
+  },
+  {
+    slug: "backup-dr-review",
+    name: "Backup & DR Review",
+    tagline: "Prove you can recover — before you need to.",
+    bestFor:
+      "Organisations that “have backups” but have never tested restores, or need a practical DR plan the business understands.",
+    duration: "Typically 2–3 days",
+    outcome:
+      "Clear RPO/RTO language, tested recovery confidence for critical systems, and a DR path you can fund and run.",
+    includes: [
+      "Map of critical systems and data (what actually matters to the business)",
+      "Review of current backup tools, jobs, retention, and off-site copies",
+      "Restore test design and observation (or guidance if you run the test)",
+      "Gap analysis against realistic outage and ransomware scenarios",
+      "Practical DR options (cost vs recovery time trade-offs)",
+      "Short runbook outline for the first hours of an incident",
+    ],
+    notIncluded: [
+      "Full multi-site DR build (scoped as a follow-on project)",
+      "Cyber insurance underwriting or legal advice",
+    ],
+  },
+] as const;
+
+/** Core service cards — capability areas behind the packages. */
 export const services = [
   {
     slug: "infrastructure",
@@ -56,6 +130,7 @@ export const whyUs = [
   "Tailored solutions — not off-the-shelf packages",
   "Clear communication — plain English, no jargon wall",
   "Right-sized for growing businesses — not enterprise-only pricing",
+  "Works with internal IT and MSPs when you need senior specialist depth",
 ] as const;
 
 export const projects = [
