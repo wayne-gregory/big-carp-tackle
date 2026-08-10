@@ -1,0 +1,10 @@
+# https://www.inovacore.co.uk
+User-agent: *
+Allow: /
+
+# App / auth surfaces
+Disallow: /login
+Disallow: /api/
+Disallow: /__grok/
+
+Sitemap: https://www.inovacore.co.uk/sitemap.xml

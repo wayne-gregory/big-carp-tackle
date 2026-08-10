@@ -2,8 +2,18 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { GROK_PROVIDERS, authEnabled, signIn } from "@/lib/auth/client";
 import { Button } from "@/components/ui/button";
 import { Logo } from "@/components/site/logo";
+import { pageHead } from "@/lib/seo";
 
-export const Route = createFileRoute("/login")({ component: Login });
+export const Route = createFileRoute("/login")({
+  head: () =>
+    pageHead({
+      title: "Sign in",
+      description: "Sign in to InovaCore client access.",
+      path: "/login",
+      index: false,
+    }),
+  component: Login,
+});
 
 function Login() {
   return (

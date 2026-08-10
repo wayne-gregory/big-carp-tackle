@@ -3,8 +3,38 @@ import { CheckCircle2 } from "lucide-react";
 import { SiteShell, PageHero } from "@/components/site/shell";
 import { Button } from "@/components/ui/button";
 import { services } from "@/lib/company";
+import {
+  breadcrumbJsonLd,
+  coreKeywords,
+  jsonLdScript,
+  pageHead,
+} from "@/lib/seo";
 
-export const Route = createFileRoute("/services")({ component: ServicesPage });
+export const Route = createFileRoute("/services")({
+  head: () => ({
+    ...pageHead({
+      title: "Microsoft 365, cloud & IT services",
+      description:
+        "Microsoft 365 Business Premium, identity and devices, backup, Azure hybrid, and servers for small and mid-sized businesses in the UK.",
+      path: "/services",
+      keywords: [
+        ...coreKeywords,
+        "Microsoft 365 services",
+        "Intune setup",
+        "business IT consultancy",
+      ],
+    }),
+    scripts: [
+      jsonLdScript(
+        breadcrumbJsonLd([
+          { name: "Home", path: "/" },
+          { name: "Services", path: "/services" },
+        ]),
+      ),
+    ],
+  }),
+  component: ServicesPage,
+});
 
 const advantages = [
   {

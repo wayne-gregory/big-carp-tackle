@@ -3,8 +3,33 @@ import { MapPin, Mail } from "lucide-react";
 import { SiteShell, PageHero } from "@/components/site/shell";
 import { ContactForm } from "@/components/site/contact-form";
 import { company } from "@/lib/company";
+import {
+  breadcrumbJsonLd,
+  coreKeywords,
+  jsonLdScript,
+  pageHead,
+} from "@/lib/seo";
 
-export const Route = createFileRoute("/contact")({ component: ContactPage });
+export const Route = createFileRoute("/contact")({
+  head: () => ({
+    ...pageHead({
+      title: "Contact",
+      description:
+        "Contact InovaCore about Microsoft 365, backup, hybrid cloud, or IT support for your small or mid-sized business. Based in West Sussex, UK.",
+      path: "/contact",
+      keywords: [...coreKeywords, "contact IT consultant", "West Sussex IT"],
+    }),
+    scripts: [
+      jsonLdScript(
+        breadcrumbJsonLd([
+          { name: "Home", path: "/" },
+          { name: "Contact", path: "/contact" },
+        ]),
+      ),
+    ],
+  }),
+  component: ContactPage,
+});
 
 const faqs = [
   {

@@ -2,8 +2,31 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { SiteShell, PageHero } from "@/components/site/shell";
 import { Button } from "@/components/ui/button";
 import { projects } from "@/lib/company";
+import {
+  breadcrumbJsonLd,
+  coreKeywords,
+  jsonLdScript,
+  pageHead,
+} from "@/lib/seo";
 
 export const Route = createFileRoute("/case-studies")({
+  head: () => ({
+    ...pageHead({
+      title: "Case studies",
+      description:
+        "Examples of Microsoft 365 Business Premium rollouts, backup, hybrid cloud, and IT projects for growing UK businesses.",
+      path: "/case-studies",
+      keywords: [...coreKeywords, "IT case studies", "Microsoft 365 rollout"],
+    }),
+    scripts: [
+      jsonLdScript(
+        breadcrumbJsonLd([
+          { name: "Home", path: "/" },
+          { name: "Case studies", path: "/case-studies" },
+        ]),
+      ),
+    ],
+  }),
   component: CaseStudiesPage,
 });
 

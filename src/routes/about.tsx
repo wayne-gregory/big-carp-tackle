@@ -2,8 +2,33 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { SiteShell, PageHero } from "@/components/site/shell";
 import { Button } from "@/components/ui/button";
 import { company, platforms, team, testimonials } from "@/lib/company";
+import {
+  breadcrumbJsonLd,
+  coreKeywords,
+  jsonLdScript,
+  pageHead,
+} from "@/lib/seo";
 
-export const Route = createFileRoute("/about")({ component: AboutPage });
+export const Route = createFileRoute("/about")({
+  head: () => ({
+    ...pageHead({
+      title: "About InovaCore",
+      description:
+        "InovaCore is a UK IT consultancy for SMEs and mid-market firms — Microsoft 365, cloud, backup, and infrastructure led by Wayne Gregory.",
+      path: "/about",
+      keywords: [...coreKeywords, "InovaCore Limited", "Wayne Gregory IT"],
+    }),
+    scripts: [
+      jsonLdScript(
+        breadcrumbJsonLd([
+          { name: "Home", path: "/" },
+          { name: "About", path: "/about" },
+        ]),
+      ),
+    ],
+  }),
+  component: AboutPage,
+});
 
 const values = [
   {

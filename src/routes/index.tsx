@@ -19,8 +19,18 @@ import {
   team,
   testimonials,
 } from "@/lib/company";
+import { coreKeywords, pageHead } from "@/lib/seo";
 
-export const Route = createFileRoute("/")({ component: Home });
+export const Route = createFileRoute("/")({
+  head: () =>
+    pageHead({
+      title: `${company.name} | ${company.tagline}`,
+      description: company.description,
+      path: "/",
+      keywords: coreKeywords,
+    }),
+  component: Home,
+});
 
 const SERVICE_ICONS = [
   Cloud,
@@ -64,10 +74,11 @@ function Home() {
             <div className="overflow-hidden rounded-xl border border-border shadow-soft">
               <img
                 src="/hero.jpg"
-                alt="Modern workspace with cloud and collaboration technology"
+                alt="Modern workspace illustrating practical IT and Microsoft 365 for growing businesses"
                 className="aspect-[4/3] h-full w-full object-cover"
                 width={1176}
                 height={784}
+                fetchPriority="high"
               />
             </div>
           </div>
@@ -87,13 +98,16 @@ function Home() {
         </div>
       </section>
 
-      <section className="section-pad">
+      <section className="section-pad" aria-labelledby="services-heading">
         <div className="container-page">
           <div className="max-w-2xl">
             <p className="text-xs font-semibold uppercase tracking-[0.16em] text-accent">
               Services
             </p>
-            <h2 className="mt-3 font-display text-3xl font-semibold tracking-tight text-ink sm:text-4xl">
+            <h2
+              id="services-heading"
+              className="mt-3 font-display text-3xl font-semibold tracking-tight text-ink sm:text-4xl"
+            >
               Right-sized IT — not enterprise theatre
             </h2>
             <p className="mt-4 text-base text-fg-muted sm:text-lg">
@@ -134,14 +148,20 @@ function Home() {
         </div>
       </section>
 
-      <section className="section-pad border-t border-border bg-bg-elevated">
+      <section
+        className="section-pad border-t border-border bg-bg-elevated"
+        aria-labelledby="work-heading"
+      >
         <div className="container-page">
           <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
             <div className="max-w-2xl">
               <p className="text-xs font-semibold uppercase tracking-[0.16em] text-accent">
                 Example work
               </p>
-              <h2 className="mt-3 font-display text-3xl font-semibold tracking-tight text-ink sm:text-4xl">
+              <h2
+                id="work-heading"
+                className="mt-3 font-display text-3xl font-semibold tracking-tight text-ink sm:text-4xl"
+              >
                 Outcomes that matter day to day
               </h2>
             </div>
@@ -177,13 +197,16 @@ function Home() {
         </div>
       </section>
 
-      <section className="section-pad">
+      <section className="section-pad" aria-labelledby="why-heading">
         <div className="container-page">
           <div className="max-w-2xl">
             <p className="text-xs font-semibold uppercase tracking-[0.16em] text-accent">
               Why InovaCore
             </p>
-            <h2 className="mt-3 font-display text-3xl font-semibold tracking-tight text-ink sm:text-4xl">
+            <h2
+              id="why-heading"
+              className="mt-3 font-display text-3xl font-semibold tracking-tight text-ink sm:text-4xl"
+            >
               Senior help, sized for your business
             </h2>
           </div>
