@@ -41,13 +41,15 @@ export function SiteHeader() {
     return () => window.removeEventListener("keydown", onKey);
   }, [open]);
 
+  const onDark = !scrolled && !open;
+
   return (
     <header
       className={cn(
         "sticky top-0 z-40 border-b transition-colors duration-200",
-        scrolled
-          ? "border-border bg-bg-elevated/90 backdrop-blur-md"
-          : "border-transparent bg-bg/80 backdrop-blur-sm",
+        onDark
+          ? "border-white/10 bg-ink/85 text-white backdrop-blur-sm"
+          : "border-border bg-bg-elevated/95 backdrop-blur-md",
       )}
       style={{ paddingTop: "var(--grok-banner-h, 0px)" }}
     >
@@ -55,6 +57,7 @@ export function SiteHeader() {
         <Logo
           heightClass="h-8 sm:h-9"
           className="min-w-0 shrink"
+          tone={onDark ? "on-dark" : "color"}
           onClick={() => setOpen(false)}
         />
 
@@ -63,7 +66,12 @@ export function SiteHeader() {
             <Link
               key={item.to}
               to={item.to}
-              className="text-sm font-medium text-fg-muted transition-colors hover:text-fg [&.active]:text-accent"
+              className={cn(
+                "text-sm font-medium transition-colors [&.active]:font-semibold",
+                onDark
+                  ? "text-white/80 hover:text-white [&.active]:text-sky-300"
+                  : "text-fg-muted hover:text-fg [&.active]:text-accent",
+              )}
               activeProps={{ className: "active" }}
             >
               {item.label}
@@ -72,7 +80,7 @@ export function SiteHeader() {
         </nav>
 
         <div className="hidden items-center gap-3 md:flex">
-          <AuthSlot />
+          {!onDark && <AuthSlot />}
           <Button asChild size="sm">
             <Link to="/contact">Book a consultation</Link>
           </Button>
@@ -80,7 +88,12 @@ export function SiteHeader() {
 
         <button
           type="button"
-          className="inline-flex h-11 w-11 items-center justify-center rounded-md border border-border bg-bg-elevated text-fg md:hidden"
+          className={cn(
+            "inline-flex h-11 w-11 items-center justify-center rounded-md border md:hidden",
+            onDark
+              ? "border-white/20 bg-white/10 text-white"
+              : "border-border bg-bg-elevated text-fg",
+          )}
           aria-label={open ? "Close menu" : "Open menu"}
           aria-expanded={open}
           onClick={() => setOpen((v) => !v)}
