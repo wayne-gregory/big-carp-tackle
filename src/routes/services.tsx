@@ -15,15 +15,14 @@ export const Route = createFileRoute("/services")({
     ...pageHead({
       title: "Infrastructure & cloud services",
       description:
-        "Packages including Infrastructure Health Check, Business Premium Launch, Backup & DR Review, and Patch & Monitor with Robopack and Checkmk — cost-aware tooling for growing UK businesses.",
+        "Packages including Infrastructure Health Check, Business Premium Launch, Backup & DR Review, and cost-aware Patch & Monitor — for growing UK businesses.",
       path: "/services",
       keywords: [
         ...coreKeywords,
         "infrastructure health check",
         "Microsoft 365 Business Premium setup",
         "backup disaster recovery review",
-        "Robopack Intune patching",
-        "Checkmk monitoring",
+        "Intune third-party patching",
         "open source monitoring",
       ],
     }),
@@ -65,9 +64,9 @@ const expansions: Record<string, string[]> = {
     "Practical compliance support",
   ],
   "patch-monitor": [
-    "Robopack for Intune third-party apps",
-    "Automated packaging and patch waves",
-    "Checkmk open-source monitoring",
+    "Intune third-party app updates",
+    "Automated packaging and rollout waves",
+    "Open-source infrastructure monitoring",
     "Alerting without licence bloat",
   ],
   automation: [
@@ -84,7 +83,7 @@ function ServicesPage() {
       <PageHero
         eyebrow="Services"
         title="Better performance. Stronger resilience. Less IT friction."
-        description="Start with a named package when you want a clear scope — including cost-aware patching and monitoring with Robopack and Checkmk — or use the wider service areas for larger projects."
+        description="Start with a named package when you want a clear scope — including cost-aware patching and monitoring — or use the wider service areas for larger projects."
       />
 
       <section

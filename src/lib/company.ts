@@ -94,18 +94,18 @@ export const packages = [
   },
   {
     slug: "patch-monitor",
-    name: "Patch & Monitor (Robopack + Checkmk)",
+    name: "Patch & Monitor",
     tagline:
-      "Enterprise-grade patching and visibility without enterprise licence bills.",
+      "Keep apps and servers current and visible — without enterprise licence bills.",
     bestFor:
-      "Teams on Microsoft Intune who need third-party app patching, plus honest server/infra monitoring — without locking into expensive commercial suites.",
+      "Teams on Microsoft Intune who need third-party app patching, plus honest server and infrastructure monitoring, without locking into expensive commercial suites.",
     duration: "Design and deploy engagement; optional light handover support",
     outcome:
-      "Robopack wired into Intune for automated app packaging/patching, Checkmk watching what matters, and your people able to run both day to day.",
+      "Automated third-party app patching through Intune, open-source monitoring of what matters, and your people able to run both day to day.",
     includes: [
-      "Robopack design for Intune: packaging pipeline, patch flows, and sensible rollout waves",
-      "Third-party app coverage so Chrome, Adobe, Zoom and the rest do not stay stale",
-      "Checkmk deployment (open-source stack) for hosts, services, and critical infrastructure checks",
+      "Intune-centred design for packaging and third-party app updates",
+      "Controlled rollout waves so Chrome, Adobe, Zoom and the rest do not stay stale",
+      "Open-source monitoring for hosts, services, and critical infrastructure checks",
       "Alert routing that reaches the right people — not a noise factory",
       "Dashboards and documentation your IT lead or MSP can own",
       "Cost-aware design: open source and efficient tooling where it beats premium lock-in",
@@ -143,7 +143,7 @@ export const services = [
   {
     slug: "patch-monitor",
     title: "Patching & monitoring",
-    body: "Robopack for Intune third-party patching and Checkmk for open-source monitoring — keep estates current and visible without heavy commercial licence spend.",
+    body: "Third-party app patching via Intune and open-source infrastructure monitoring — keep estates current and visible without heavy commercial licence spend.",
   },
   {
     slug: "automation",
@@ -213,7 +213,7 @@ export const team = [
       "Backup & DR",
       "Security & identity",
       "Microsoft 365 Business Premium",
-      "Robopack & Checkmk",
+      "Patching & monitoring",
       "Automation",
     ],
   },
@@ -223,8 +223,8 @@ export const platforms = [
   "VMware",
   "Azure",
   "Microsoft 365",
-  "Intune / Robopack",
-  "Checkmk",
+  "Intune",
+  "Open-source monitoring",
   "Backup & DR",
 ] as const;
 

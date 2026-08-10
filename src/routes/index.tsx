@@ -119,8 +119,8 @@ function Home() {
                 Four clear ways to start
               </h2>
               <p className="mt-3 text-fg-muted">
-                Named engagements with a defined outcome — including
-                cost-aware patching and monitoring with Robopack and Checkmk.
+                Named engagements with a defined outcome — including cost-aware
+                patching and monitoring without heavy commercial licence spend.
               </p>
             </div>
             <Button asChild variant="secondary" className="shrink-0">
@@ -353,7 +353,7 @@ function Home() {
               <p className="mt-2 text-sm text-fg-muted">
                 Works with internal IT and MSPs when estates need senior
                 infrastructure or Microsoft expertise — including cost-aware
-                Robopack and Checkmk deployments.
+                patching and monitoring.
               </p>
             </div>
           </div>
