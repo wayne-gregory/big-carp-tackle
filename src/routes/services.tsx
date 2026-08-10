@@ -15,7 +15,7 @@ export const Route = createFileRoute("/services")({
     ...pageHead({
       title: "Infrastructure & cloud services",
       description:
-        "Infrastructure & virtualisation, Azure cloud, backup & DR, security, and IT automation — for growing businesses with more complex environments.",
+        "Infrastructure and virtualisation, Azure cloud, backup and DR, security, and IT automation for growing UK businesses.",
       path: "/services",
       keywords: [
         ...coreKeywords,
@@ -75,8 +75,8 @@ function ServicesPage() {
     <SiteShell>
       <PageHero
         eyebrow="Services"
-        title="Infrastructure & cloud that solves real problems"
-        description="Five focused areas — not a laundry list of every IT task. Built to convert complexity into performance, reliability, and a clear next step: a consultation."
+        title="What we help with"
+        description="Five clear service areas for growing businesses — infrastructure, cloud, backup, security, and automation. Practical work that improves performance and reliability, with a consultation when you’re ready to go further."
       />
 
       <section className="section-pad border-b border-border bg-bg-elevated">
@@ -119,10 +119,7 @@ function ServicesPage() {
               </p>
               <ul className="mt-5 grid gap-2 sm:grid-cols-2">
                 {(expansions[s.slug] ?? []).map((line) => (
-                  <li
-                    key={line}
-                    className="flex gap-2 text-sm text-fg"
-                  >
+                  <li key={line} className="flex gap-2 text-sm text-fg">
                     <CheckCircle2
                       className="mt-0.5 size-4 shrink-0 text-accent"
                       strokeWidth={2}
