@@ -92,6 +92,30 @@ export const packages = [
       "Cyber insurance underwriting or legal advice",
     ],
   },
+  {
+    slug: "patch-monitor",
+    name: "Patch & Monitor (Robopack + Checkmk)",
+    tagline:
+      "Enterprise-grade patching and visibility without enterprise licence bills.",
+    bestFor:
+      "Teams on Microsoft Intune who need third-party app patching, plus honest server/infra monitoring — without locking into expensive commercial suites.",
+    duration: "Design and deploy engagement; optional light handover support",
+    outcome:
+      "Robopack wired into Intune for automated app packaging/patching, Checkmk watching what matters, and your people able to run both day to day.",
+    includes: [
+      "Robopack design for Intune: packaging pipeline, patch flows, and sensible rollout waves",
+      "Third-party app coverage so Chrome, Adobe, Zoom and the rest do not stay stale",
+      "Checkmk deployment (open-source stack) for hosts, services, and critical infrastructure checks",
+      "Alert routing that reaches the right people — not a noise factory",
+      "Dashboards and documentation your IT lead or MSP can own",
+      "Cost-aware design: open source and efficient tooling where it beats premium lock-in",
+    ],
+    notIncluded: [
+      "24/7 NOC / manned monitoring desk (we build the system; you or your MSP respond)",
+      "Perpetual licence fees for proprietary patch/monitor suites we are replacing",
+      "Desktop helpdesk or end-user ticket handling",
+    ],
+  },
 ] as const;
 
 /** Core service cards — capability areas behind the packages. */
@@ -117,6 +141,11 @@ export const services = [
     body: "Identity, endpoint protection, access control, and hardening — practical security for production environments, not checkbox theatre.",
   },
   {
+    slug: "patch-monitor",
+    title: "Patching & monitoring",
+    body: "Robopack for Intune third-party patching and Checkmk for open-source monitoring — keep estates current and visible without heavy commercial licence spend.",
+  },
+  {
     slug: "automation",
     title: "IT automation & optimisation",
     body: "PowerShell and process automation, reporting, and optimisation so routine work is consistent and performance stays visible.",
@@ -127,6 +156,7 @@ export const whyUs = [
   "Experience in complex, production environments",
   "VMware and Azure expertise with Microsoft 365 where it fits",
   "Focus on performance, reliability, and uptime",
+  "Cost-aware tooling — open source and efficient platforms where they beat licence bloat",
   "Tailored solutions — not off-the-shelf packages",
   "Clear communication — plain English, no jargon wall",
   "Right-sized for growing businesses — not enterprise-only pricing",
@@ -183,6 +213,7 @@ export const team = [
       "Backup & DR",
       "Security & identity",
       "Microsoft 365 Business Premium",
+      "Robopack & Checkmk",
       "Automation",
     ],
   },
@@ -192,9 +223,9 @@ export const platforms = [
   "VMware",
   "Azure",
   "Microsoft 365",
+  "Intune / Robopack",
+  "Checkmk",
   "Backup & DR",
-  "Entra ID / Intune",
-  "PowerShell",
 ] as const;
 
 export const testimonials = [

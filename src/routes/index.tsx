@@ -1,6 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import {
   ArrowRight,
+  Activity,
   Cloud,
   DatabaseBackup,
   Quote,
@@ -33,7 +34,14 @@ export const Route = createFileRoute("/")({
   component: Home,
 });
 
-const SERVICE_ICONS = [Server, Cloud, DatabaseBackup, ShieldCheck, Workflow];
+const SERVICE_ICONS = [
+  Server,
+  Cloud,
+  DatabaseBackup,
+  ShieldCheck,
+  Activity,
+  Workflow,
+];
 
 function Home() {
   const founder = team[0];
@@ -97,7 +105,6 @@ function Home() {
         </div>
       </section>
 
-      {/* Packages teaser */}
       <section className="section-pad surface-page" aria-labelledby="pkg-heading">
         <div className="container-page">
           <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
@@ -109,11 +116,11 @@ function Home() {
                 id="pkg-heading"
                 className="mt-3 font-display text-3xl font-semibold tracking-tight text-ink sm:text-4xl"
               >
-                Three clear ways to start
+                Four clear ways to start
               </h2>
               <p className="mt-3 text-fg-muted">
-                Named engagements with a defined outcome — price confirmed after
-                a short conversation about size and complexity.
+                Named engagements with a defined outcome — including
+                cost-aware patching and monitoring with Robopack and Checkmk.
               </p>
             </div>
             <Button asChild variant="secondary" className="shrink-0">
@@ -123,7 +130,7 @@ function Home() {
               </Link>
             </Button>
           </div>
-          <div className="mt-10 grid gap-5 md:grid-cols-3">
+          <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
             {packages.map((pkg) => (
               <article key={pkg.slug} className="card-surface flex flex-col p-6">
                 <h3 className="font-display text-lg font-semibold text-ink">
@@ -161,8 +168,8 @@ function Home() {
               Performance, resilience, and clarity — not more complexity
             </h2>
             <p className="mt-4 text-base text-fg-muted sm:text-lg">
-              Five focused areas that reduce downtime risk, speed up estates,
-              and make day-to-day IT easier to run.
+              Focused areas that reduce downtime risk, speed up estates, and
+              keep tooling costs under control.
             </p>
           </div>
           <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
@@ -222,7 +229,10 @@ function Home() {
         </div>
       </section>
 
-      <section className="section-pad border-t border-border surface-elevated" aria-labelledby="cred-heading">
+      <section
+        className="section-pad border-t border-border surface-elevated"
+        aria-labelledby="cred-heading"
+      >
         <div className="container-page">
           <div className="max-w-2xl">
             <p className="text-xs font-semibold uppercase tracking-[0.16em] text-accent">
@@ -342,7 +352,8 @@ function Home() {
               </p>
               <p className="mt-2 text-sm text-fg-muted">
                 Works with internal IT and MSPs when estates need senior
-                infrastructure or Microsoft expertise.
+                infrastructure or Microsoft expertise — including cost-aware
+                Robopack and Checkmk deployments.
               </p>
             </div>
           </div>

@@ -15,14 +15,16 @@ export const Route = createFileRoute("/services")({
     ...pageHead({
       title: "Infrastructure & cloud services",
       description:
-        "Named packages: Infrastructure Health Check, Business Premium Launch, and Backup & DR Review — plus specialist infrastructure and cloud services for growing UK businesses.",
+        "Packages including Infrastructure Health Check, Business Premium Launch, Backup & DR Review, and Patch & Monitor with Robopack and Checkmk — cost-aware tooling for growing UK businesses.",
       path: "/services",
       keywords: [
         ...coreKeywords,
         "infrastructure health check",
         "Microsoft 365 Business Premium setup",
         "backup disaster recovery review",
-        "VMware consultancy",
+        "Robopack Intune patching",
+        "Checkmk monitoring",
+        "open source monitoring",
       ],
     }),
     scripts: [
@@ -62,6 +64,12 @@ const expansions: Record<string, string[]> = {
     "Hardening & baselines",
     "Practical compliance support",
   ],
+  "patch-monitor": [
+    "Robopack for Intune third-party apps",
+    "Automated packaging and patch waves",
+    "Checkmk open-source monitoring",
+    "Alerting without licence bloat",
+  ],
   automation: [
     "PowerShell automation",
     "Process improvement",
@@ -76,10 +84,9 @@ function ServicesPage() {
       <PageHero
         eyebrow="Services"
         title="Better performance. Stronger resilience. Less IT friction."
-        description="Start with a named package when you want a clear scope — or use the wider service areas for larger projects. Specialist delivery, not a ticket queue."
+        description="Start with a named package when you want a clear scope — including cost-aware patching and monitoring with Robopack and Checkmk — or use the wider service areas for larger projects."
       />
 
-      {/* Named packages */}
       <section
         className="section-pad border-b border-border bg-bg-elevated"
         aria-labelledby="packages-heading"
@@ -93,15 +100,17 @@ function ServicesPage() {
               id="packages-heading"
               className="mt-3 font-display text-2xl font-semibold tracking-tight text-ink sm:text-3xl"
             >
-              Three clear ways to start
+              Four clear ways to start
             </h2>
             <p className="mt-3 text-fg-muted">
               Fixed intent and deliverables. Pricing depends on size and
-              complexity — we confirm that after a short conversation.
+              complexity — we confirm that after a short conversation. Where it
+              makes sense, we favour open-source and efficient tooling so you
+              are not paying enterprise licence tax for basics.
             </p>
           </div>
 
-          <div className="mt-12 grid gap-6 lg:grid-cols-3">
+          <div className="mt-12 grid gap-6 sm:grid-cols-2">
             {packages.map((pkg) => (
               <article
                 key={pkg.slug}
@@ -179,7 +188,6 @@ function ServicesPage() {
         </div>
       </section>
 
-      {/* Capability areas */}
       <section className="section-pad" aria-labelledby="capabilities-heading">
         <div className="container-page">
           <div className="max-w-2xl">
