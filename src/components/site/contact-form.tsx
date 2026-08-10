@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
+import { company } from "@/lib/company";
 
 const schema = z.object({
   firstName: z.string().trim().min(1, "Required"),
@@ -14,6 +15,8 @@ const schema = z.object({
   email: z.string().trim().email("Enter a valid email"),
   phone: z.string().trim().optional(),
   message: z.string().trim().min(10, "Tell us a little more"),
+  /** Honeypot for bots — leave empty */
+  companyWebsite: z.string().optional(),
 });
 
 type FormValues = z.infer<typeof schema>;
@@ -33,25 +36,66 @@ export function ContactForm() {
       email: "",
       phone: "",
       message: "",
+      companyWebsite: "",
     },
   });
 
   const onSubmit = async (data: FormValues) => {
-    await new Promise((r) => setTimeout(r, 600));
-    console.info("[contact]", data);
-    setSent(true);
-    reset();
-    toast.success("Message sent", {
-      description: "We'll get back to you shortly.",
-    });
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify(data),
+      });
+      const body = (await res.json().catch(() => null)) as {
+        ok?: boolean;
+        error?: string;
+        note?: string;
+      } | null;
+
+      if (!res.ok || !body?.ok) {
+        throw new Error(
+          body?.error ||
+            `Could not send message. Please email ${company.email} instead.`,
+        );
+      }
+
+      setSent(true);
+      reset();
+      toast.success("Message sent", {
+        description: `We will reply to the email you provided. If nothing arrives, email ${company.email} directly.`,
+      });
+    } catch (err) {
+      const message =
+        err instanceof Error
+          ? err.message
+          : `Could not send. Please email ${company.email}`;
+      toast.error("Message not sent", { description: message });
+    }
   };
 
   return (
     <form
       onSubmit={handleSubmit(onSubmit)}
-      className="space-y-5 rounded-xl border border-border bg-bg-elevated p-6 shadow-soft sm:p-8"
+      className="relative space-y-5 rounded-xl border border-border bg-bg-elevated p-6 shadow-soft sm:p-8"
       noValidate
     >
+      <div
+        className="pointer-events-none absolute left-0 top-0 -z-10 h-0 w-0 overflow-hidden opacity-0"
+        aria-hidden
+      >
+        <Label htmlFor="companyWebsite">Company website</Label>
+        <Input
+          id="companyWebsite"
+          tabIndex={-1}
+          autoComplete="off"
+          {...register("companyWebsite")}
+        />
+      </div>
+
       <div className="grid gap-5 sm:grid-cols-2">
         <div className="space-y-2">
           <Label htmlFor="firstName">First name</Label>
@@ -101,7 +145,7 @@ export function ContactForm() {
       </div>
       <div className="space-y-2">
         <Label htmlFor="message">How can we help?</Label>
-        <Textarea id="message" {...register("message")} />
+        <Textarea id="message" rows={5} {...register("message")} />
         {errors.message ? (
           <p className="text-xs text-red-700">{errors.message.message}</p>
         ) : null}
@@ -109,8 +153,8 @@ export function ContactForm() {
       <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
         <p className="text-xs text-fg-subtle">
           {sent
-            ? "Thanks — we received your message."
-            : "Cloud migration, Azure, VMware, backup & DR, automation."}
+            ? `Thanks — your message is on its way to ${company.email}.`
+            : `Or email us directly at ${company.email}`}
         </p>
         <Button type="submit" disabled={isSubmitting} className="sm:min-w-40">
           {isSubmitting ? "Sending…" : "Send message"}
