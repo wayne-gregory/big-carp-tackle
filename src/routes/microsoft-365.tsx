@@ -22,7 +22,7 @@ export const Route = createFileRoute("/microsoft-365")({
     ...pageHead({
       title: "Microsoft 365 Business Premium for growing companies",
       description:
-        "Get Microsoft 365 Business Premium set up properly — email, Teams, SharePoint, Intune, security and devices — for small and mid-sized UK businesses. Right-sized, no enterprise oversell.",
+        "Secure email, managed devices, and collaboration that staff actually use — Microsoft 365 Business Premium setup for UK SMEs without enterprise oversell.",
       path: "/microsoft-365",
       keywords: [
         ...coreKeywords,
@@ -30,7 +30,6 @@ export const Route = createFileRoute("/microsoft-365")({
         "Business Premium migration",
         "Microsoft 365 for SMEs",
         "Intune for small business",
-        "M365 consultant West Sussex",
       ],
     }),
     scripts: [
@@ -117,7 +116,7 @@ const faqs = [
   },
   {
     q: "Will you oversell licences or tools?",
-    a: "No. The brief is right-sized Microsoft 365 for growing businesses — the same approach we use for mid-market firms that cannot justify enterprise architecture retainers.",
+    a: "No. The brief is right-sized Microsoft 365 for growing businesses — secure and usable without enterprise bloat.",
   },
 ] as const;
 
@@ -126,15 +125,15 @@ function Microsoft365Page() {
     <SiteShell>
       <PageHero
         eyebrow="Microsoft 365"
-        title="Microsoft 365 Business Premium — set up for how you actually work"
-        description="Email, Teams, security and managed devices for small and mid-sized companies. Senior help without enterprise pricing or a six-month transformation programme."
+        title="Secure, usable Microsoft 365 — without the enterprise bloat"
+        description="Business Premium done properly: email and Teams people adopt, devices under control, and security staff will actually live with."
       />
 
       <section className="section-pad">
         <div className="container-page grid gap-10 lg:grid-cols-12 lg:items-center">
           <div className="lg:col-span-7 space-y-5">
             <h2 className="font-display text-2xl font-semibold tracking-tight text-ink sm:text-3xl">
-              Built for the Business Premium size of company
+              Productivity and protection in one stack
             </h2>
             <p className="text-base leading-relaxed text-fg-muted">
               If you are past “personal Gmail and a shared folder” but not ready
@@ -144,9 +143,8 @@ function Microsoft365Page() {
               client work.
             </p>
             <p className="text-base leading-relaxed text-fg-muted">
-              That includes professional firms, multi-site teams, and growing
-              businesses that need reliable mail, collaboration, and device
-              control — without being sold a stack they will never operate.
+              The benefit is simple: staff work faster, data is safer, and you
+              are not paying for licences or tools you will never operate.
             </p>
             <div className="flex flex-col gap-3 sm:flex-row">
               <Button asChild size="lg">
@@ -163,11 +161,11 @@ function Microsoft365Page() {
           <div className="lg:col-span-5">
             <div className="rounded-xl border border-border bg-bg-elevated p-6 shadow-soft">
               <p className="text-xs font-semibold uppercase tracking-wider text-accent">
-                Typical outcomes
+                Key benefits
               </p>
               <ul className="mt-4 space-y-3">
                 {[
-                  "Mail and Teams that staff actually adopt",
+                  "Mail and Teams staff actually adopt",
                   "MFA and identity done properly first time",
                   "Laptops and phones under Intune policy",
                   "Clear admin ownership after go-live",
@@ -261,12 +259,11 @@ function Microsoft365Page() {
           <div className="rounded-xl border border-border bg-accent p-8 text-accent-fg sm:p-10 lg:flex lg:items-center lg:justify-between lg:gap-10">
             <div className="max-w-xl">
               <h2 className="font-display text-2xl font-semibold tracking-tight sm:text-3xl">
-                Ready to get Business Premium working properly?
+                Ready for Microsoft 365 that is secure and usable?
               </h2>
               <p className="mt-3 text-accent-fg/80">
                 Tell us roughly how many users you have and what you use for
-                email today. We will suggest a practical next step — no hard
-                sell.
+                email today. We will suggest a practical next step.
               </p>
             </div>
             <div className="mt-6 shrink-0 lg:mt-0">

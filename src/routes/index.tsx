@@ -39,17 +39,17 @@ function Home() {
 
   return (
     <SiteShell>
-      {/* 1. Hero */}
       <section className="surface-ink border-b border-ink-border">
         <div className="container-page grid items-center gap-10 py-16 sm:py-20 lg:grid-cols-12 lg:gap-12 lg:py-24">
           <div className="lg:col-span-6">
             <p className="surface-ink-eyebrow">Infrastructure & cloud</p>
             <h1 className="surface-ink-title text-4xl leading-[1.12] sm:text-5xl lg:text-[3.15rem]">
-              IT infrastructure & cloud solutions that actually work
+              Faster systems. Fewer outages. IT you can trust.
             </h1>
             <p className="surface-ink-body">
-              We help growing businesses design, secure, and scale their IT —
-              without complexity, downtime, or guesswork.
+              Design, secure, and scale infrastructure and cloud for growing
+              businesses — better performance, solid backup, and Microsoft 365
+              that works day to day, without the guesswork.
             </p>
             <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center">
               <Button asChild size="lg">
@@ -83,7 +83,6 @@ function Home() {
         </div>
       </section>
 
-      {/* 2. Trust bar */}
       <section className="border-b border-border surface-elevated">
         <div className="container-page flex flex-col gap-4 py-6 sm:flex-row sm:items-center sm:justify-between">
           <p className="text-sm font-medium text-fg">
@@ -97,7 +96,6 @@ function Home() {
         </div>
       </section>
 
-      {/* 3. Services */}
       <section className="section-pad surface-page" aria-labelledby="services-heading">
         <div className="container-page">
           <div className="max-w-2xl">
@@ -108,11 +106,11 @@ function Home() {
               id="services-heading"
               className="mt-3 font-display text-3xl font-semibold tracking-tight text-ink sm:text-4xl"
             >
-              Fix performance. Simplify complexity. Design it properly.
+              Performance, resilience, and clarity — not more complexity
             </h2>
             <p className="mt-4 text-base text-fg-muted sm:text-lg">
-              Not a generic “we do all IT” shop — focused infrastructure and
-              cloud work for environments that need real design and reliability.
+              Five focused areas that reduce downtime risk, speed up estates,
+              and make day-to-day IT easier to run.
             </p>
           </div>
           <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
@@ -147,7 +145,6 @@ function Home() {
         </div>
       </section>
 
-      {/* 4. Why choose us */}
       <section className="section-pad border-t border-border surface-elevated">
         <div className="container-page grid gap-10 lg:grid-cols-12">
           <div className="lg:col-span-5">
@@ -155,7 +152,7 @@ function Home() {
               Why InovaCore
             </p>
             <h2 className="mt-3 font-display text-3xl font-semibold tracking-tight text-ink sm:text-4xl">
-              Built for more complex environments
+              Senior help when DIY IT starts to hurt
             </h2>
             <p className="mt-4 text-fg-muted">{company.positioning}</p>
           </div>
@@ -176,7 +173,6 @@ function Home() {
         </div>
       </section>
 
-      {/* 5. Credibility */}
       <section className="section-pad surface-page" aria-labelledby="cred-heading">
         <div className="container-page">
           <div className="max-w-2xl">
@@ -187,12 +183,11 @@ function Home() {
               id="cred-heading"
               className="mt-3 font-display text-3xl font-semibold tracking-tight text-ink sm:text-4xl"
             >
-              Production environments. Uptime and performance first.
+              Outcomes that protect uptime and productivity
             </h2>
             <p className="mt-4 text-base text-fg-muted sm:text-lg">
-              Work across live estates where downtime costs money — virtualisation,
-              hybrid cloud, DR, and Microsoft platforms delivered with clear plans
-              and measurable outcomes.
+              Real estates, real constraints — virtualisation, hybrid cloud, DR,
+              and Microsoft platforms with plans the business can follow.
             </p>
           </div>
           <div className="mt-12 grid gap-5 lg:grid-cols-3">
@@ -225,7 +220,6 @@ function Home() {
         </div>
       </section>
 
-      {/* Social proof */}
       <section className="section-pad border-t border-border surface-elevated">
         <div className="container-page">
           <h2 className="font-display text-2xl font-semibold tracking-tight text-ink sm:text-3xl">
@@ -252,14 +246,13 @@ function Home() {
         </div>
       </section>
 
-      {/* 6. Full-width CTA */}
       <section className="border-y border-border bg-accent text-accent-fg">
         <div className="container-page py-16 text-center sm:py-20">
           <h2 className="font-display text-3xl font-semibold tracking-tight sm:text-4xl">
-            Let&rsquo;s talk about your IT
+            Ready for IT that performs under pressure?
           </h2>
           <p className="mx-auto mt-4 max-w-xl text-accent-fg/80">
-            Book a consultation — performance issues, complex estates, cloud
+            Book a consultation — performance issues, resilience gaps, cloud
             moves, or Business Premium done properly.
           </p>
           <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
@@ -285,7 +278,6 @@ function Home() {
         </div>
       </section>
 
-      {/* Founder strip */}
       <section className="section-pad surface-page">
         <div className="container-page grid gap-8 lg:grid-cols-12 lg:items-center">
           <div className="lg:col-span-7">

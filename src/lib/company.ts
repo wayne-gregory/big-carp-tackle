@@ -2,11 +2,11 @@ export const company = {
   name: "InovaCore",
   legalName: "INOVACORE LIMITED",
   companyNumber: "09124480",
-  tagline: "IT infrastructure & cloud solutions that actually work",
+  tagline: "Faster systems, fewer outages, clearer IT",
   description:
-    "We help growing businesses design, secure, and scale their IT — without complexity, downtime, or guesswork. Infrastructure, cloud, backup, and Microsoft 365 for environments that have outgrown DIY setups.",
+    "We help growing businesses get reliable infrastructure and cloud — better performance, stronger backup, and Microsoft 365 that staff can actually use — without unnecessary complexity.",
   positioning:
-    "Infrastructure & cloud solutions for businesses with more complex environments — fixing performance issues, simplifying estates, and designing infrastructure properly.",
+    "Infrastructure and cloud for businesses with more complex environments: fix performance issues, simplify estates, and design systems that stay reliable.",
   email: "hello@inovacore.co.uk",
   website: "https://inovacore.co.uk",
   linkedin: "https://www.linkedin.com/in/wayne-gregory/",

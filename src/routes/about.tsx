@@ -14,7 +14,7 @@ export const Route = createFileRoute("/about")({
     ...pageHead({
       title: "About InovaCore",
       description:
-        "InovaCore helps businesses that have outgrown DIY IT — infrastructure, cloud, and Microsoft environments simplified for performance, reliability, and scale.",
+        "InovaCore helps businesses that have outgrown DIY IT — better performance, stronger resilience, and clearer infrastructure without unnecessary complexity.",
       path: "/about",
       keywords: [...coreKeywords, "InovaCore Limited", "Wayne Gregory IT"],
     }),
@@ -37,26 +37,26 @@ function AboutPage() {
     <SiteShell>
       <PageHero
         eyebrow="About"
-        title="About InovaCore"
-        description="Businesses outgrow their IT. We step in to simplify, optimise, and design infrastructure and cloud properly — with a focus on performance, reliability, and scale."
+        title="IT that keeps the business moving"
+        description="When systems are slow, fragile, or hard to run, we step in to simplify and strengthen them — performance, reliability, and scale without overcomplication."
       />
 
       <section className="section-pad">
         <div className="container-page grid gap-10 lg:grid-cols-2 lg:gap-16">
           <div className="space-y-4">
             <h2 className="font-display text-2xl font-semibold tracking-tight text-ink sm:text-3xl">
-              Straightforward. Practical. Not salesy.
+              Straightforward. Practical. Built for real estates.
             </h2>
             <p className="text-base leading-relaxed text-fg-muted">
-              When environments get complex — more servers, hybrid cloud, Microsoft
-              365, backup that has never been tested — generic IT support stops
-              being enough. InovaCore specialises in infrastructure and cloud
-              solutions for businesses with more demanding setups.
+              When environments get complex — more servers, hybrid cloud,
+              Microsoft 365, backup that has never been tested — generic IT
+              support stops being enough. InovaCore focuses on infrastructure
+              and cloud that protects uptime and productivity.
             </p>
             <p className="text-base leading-relaxed text-fg-muted">
-              That means fixing performance issues, simplifying estates that have
-              grown by accident, and designing systems that hold up in production.
-              No overcomplication. No unnecessary tools.
+              That means fixing performance issues, simplifying estates that
+              have grown by accident, and designing systems that hold up in
+              production. No unnecessary tools. No sales theatre.
             </p>
             <p className="text-base leading-relaxed text-fg-muted">
               {company.legalName} (company no. {company.companyNumber}) is a UK

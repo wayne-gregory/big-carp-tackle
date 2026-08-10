@@ -15,7 +15,7 @@ export const Route = createFileRoute("/contact")({
     ...pageHead({
       title: "Book a consultation",
       description:
-        "Book a consultation with InovaCore about infrastructure, cloud, backup, security, or Microsoft 365. Based in West Sussex, working with businesses across the UK.",
+        "Book a consultation about performance, resilience, cloud, or Microsoft 365. InovaCore — West Sussex, working across the UK.",
       path: "/contact",
       keywords: [...coreKeywords, "book IT consultation", "infrastructure quote"],
     }),
@@ -55,8 +55,8 @@ function ContactPage() {
     <SiteShell>
       <PageHero
         eyebrow="Contact"
-        title="Let’s talk about your IT"
-        description="Book a consultation or request a quote — infrastructure, cloud, backup, security, or Microsoft 365. No enterprise sales process."
+        title="Talk about the outcomes you need"
+        description="Performance, resilience, cloud, or Microsoft 365 — book a consultation or request a quote. Clear next steps, no enterprise sales process."
       />
 
       <section className="section-pad">

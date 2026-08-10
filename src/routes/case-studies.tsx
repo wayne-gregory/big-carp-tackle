@@ -14,9 +14,9 @@ export const Route = createFileRoute("/case-studies")({
     ...pageHead({
       title: "Case studies",
       description:
-        "Examples of Microsoft 365 Business Premium rollouts, backup, hybrid cloud, and IT projects for growing UK businesses.",
+        "Examples of faster performance, stronger DR, hybrid cloud, and Microsoft 365 outcomes for growing businesses.",
       path: "/case-studies",
-      keywords: [...coreKeywords, "IT case studies", "Microsoft 365 rollout"],
+      keywords: [...coreKeywords, "IT case studies", "infrastructure outcomes"],
     }),
     scripts: [
       jsonLdScript(
@@ -35,8 +35,8 @@ function CaseStudiesPage() {
     <SiteShell>
       <PageHero
         eyebrow="Case studies"
-        title="Work that fits real businesses"
-        description="Examples across Microsoft 365 Business Premium, identity and devices, backup, hybrid cloud, and server estates — for companies that need results without an enterprise programme."
+        title="Results that show up in uptime and day-to-day work"
+        description="Selected outcomes across performance, resilience, cloud, security, and Microsoft 365 — for organisations that need measurable improvement, not a slide deck."
       />
 
       <section className="section-pad">
@@ -69,17 +69,17 @@ function CaseStudiesPage() {
 
           <div className="mt-14 rounded-xl border border-border bg-accent p-8 text-accent-fg sm:p-10">
             <h2 className="font-display text-2xl font-semibold tracking-tight">
-              Need Microsoft 365 or IT help that matches your size?
+              Want similar outcomes for your estate?
             </h2>
             <p className="mt-3 max-w-2xl text-accent-fg/80">
-              Tell us how you work today — licences, devices, servers, backup —
-              and we will suggest a practical next step.
+              Tell us where performance, backup, or cloud is holding you back —
+              we will suggest a practical next step.
             </p>
             <Button
               asChild
               className="mt-6 border-0 bg-white text-accent hover:bg-white/90"
             >
-              <Link to="/contact">Get in touch</Link>
+              <Link to="/contact">Book a consultation</Link>
             </Button>
           </div>
         </div>

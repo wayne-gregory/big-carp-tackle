@@ -15,7 +15,7 @@ export const Route = createFileRoute("/services")({
     ...pageHead({
       title: "Infrastructure & cloud services",
       description:
-        "Infrastructure and virtualisation, Azure cloud, backup and DR, security, and IT automation for growing UK businesses.",
+        "Faster performance, stronger backup and DR, safer identity, and clearer cloud — infrastructure services for growing UK businesses.",
       path: "/services",
       keywords: [
         ...coreKeywords,
@@ -75,8 +75,8 @@ function ServicesPage() {
     <SiteShell>
       <PageHero
         eyebrow="Services"
-        title="What we help with"
-        description="Five clear service areas for growing businesses — infrastructure, cloud, backup, security, and automation. Practical work that improves performance and reliability, with a consultation when you’re ready to go further."
+        title="Better performance. Stronger resilience. Less IT friction."
+        description="Five practical service areas that help growing businesses run faster systems, recover with confidence, and stay secure — without buying complexity you will never use."
       />
 
       <section className="section-pad border-b border-border bg-bg-elevated">
@@ -90,8 +90,8 @@ function ServicesPage() {
                 Microsoft 365 Business Premium
               </h2>
               <p className="mt-2 text-sm leading-relaxed text-fg-muted sm:text-base">
-                Dedicated page for growing firms on Business Premium — setup,
-                security, Intune, and migration without enterprise oversell.
+                Secure, usable email and devices for growing firms — setup,
+                Intune, and migration without enterprise oversell.
               </p>
             </div>
             <Button asChild className="mt-5 shrink-0 sm:mt-0">
