@@ -66,7 +66,7 @@ function Home() {
                 </Link>
               </Button>
               <Button asChild variant="secondary" size="lg">
-                <Link to="/services">See how we help</Link>
+                <Link to="/microsoft-365">Microsoft 365 Business Premium</Link>
               </Button>
             </div>
           </div>
@@ -137,12 +137,15 @@ function Home() {
               );
             })}
           </div>
-          <div className="mt-10">
+          <div className="mt-10 flex flex-col gap-3 sm:flex-row">
             <Button asChild variant="secondary">
               <Link to="/services">
                 View all services
                 <ArrowRight className="size-4" />
               </Link>
+            </Button>
+            <Button asChild variant="ghost">
+              <Link to="/microsoft-365">Business Premium deep dive</Link>
             </Button>
           </div>
         </div>

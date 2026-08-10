@@ -14,6 +14,7 @@ import { Route as AboutRouteImport } from './routes/about'
 import { Route as CaseStudiesRouteImport } from './routes/case-studies'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as LoginRouteImport } from './routes/login'
+import { Route as Microsoft365RouteImport } from './routes/microsoft-365'
 import { Route as ServicesRouteImport } from './routes/services'
 import { Route as ApiAuthSplatRouteImport } from './routes/api/auth/$'
 
@@ -42,6 +43,11 @@ const LoginRoute = LoginRouteImport.update({
   path: '/login',
   getParentRoute: () => rootRouteImport,
 } as any)
+const Microsoft365Route = Microsoft365RouteImport.update({
+  id: '/microsoft-365',
+  path: '/microsoft-365',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ServicesRoute = ServicesRouteImport.update({
   id: '/services',
   path: '/services',
@@ -59,6 +65,7 @@ export interface FileRoutesByFullPath {
   '/case-studies': typeof CaseStudiesRoute
   '/contact': typeof ContactRoute
   '/login': typeof LoginRoute
+  '/microsoft-365': typeof Microsoft365Route
   '/services': typeof ServicesRoute
   '/api/auth/$': typeof ApiAuthSplatRoute
 }
@@ -68,6 +75,7 @@ export interface FileRoutesByTo {
   '/case-studies': typeof CaseStudiesRoute
   '/contact': typeof ContactRoute
   '/login': typeof LoginRoute
+  '/microsoft-365': typeof Microsoft365Route
   '/services': typeof ServicesRoute
   '/api/auth/$': typeof ApiAuthSplatRoute
 }
@@ -78,6 +86,7 @@ export interface FileRoutesById {
   '/case-studies': typeof CaseStudiesRoute
   '/contact': typeof ContactRoute
   '/login': typeof LoginRoute
+  '/microsoft-365': typeof Microsoft365Route
   '/services': typeof ServicesRoute
   '/api/auth/$': typeof ApiAuthSplatRoute
 }
@@ -89,6 +98,7 @@ export interface FileRouteTypes {
     | '/case-studies'
     | '/contact'
     | '/login'
+    | '/microsoft-365'
     | '/services'
     | '/api/auth/$'
   fileRoutesByTo: FileRoutesByTo
@@ -98,6 +108,7 @@ export interface FileRouteTypes {
     | '/case-studies'
     | '/contact'
     | '/login'
+    | '/microsoft-365'
     | '/services'
     | '/api/auth/$'
   id:
@@ -107,6 +118,7 @@ export interface FileRouteTypes {
     | '/case-studies'
     | '/contact'
     | '/login'
+    | '/microsoft-365'
     | '/services'
     | '/api/auth/$'
   fileRoutesById: FileRoutesById
@@ -117,6 +129,7 @@ export interface RootRouteChildren {
   CaseStudiesRoute: typeof CaseStudiesRoute
   ContactRoute: typeof ContactRoute
   LoginRoute: typeof LoginRoute
+  Microsoft365Route: typeof Microsoft365Route
   ServicesRoute: typeof ServicesRoute
   ApiAuthSplatRoute: typeof ApiAuthSplatRoute
 }
@@ -158,6 +171,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof LoginRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/microsoft-365': {
+      id: '/microsoft-365'
+      path: '/microsoft-365'
+      fullPath: '/microsoft-365'
+      preLoaderRoute: typeof Microsoft365RouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/services': {
       id: '/services'
       path: '/services'
@@ -181,6 +201,7 @@ const rootRouteChildren: RootRouteChildren = {
   CaseStudiesRoute: CaseStudiesRoute,
   ContactRoute: ContactRoute,
   LoginRoute: LoginRoute,
+  Microsoft365Route: Microsoft365Route,
   ServicesRoute: ServicesRoute,
   ApiAuthSplatRoute: ApiAuthSplatRoute,
 }

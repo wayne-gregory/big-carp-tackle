@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { CheckCircle2 } from "lucide-react";
+import { ArrowRight, CheckCircle2 } from "lucide-react";
 import { SiteShell, PageHero } from "@/components/site/shell";
 import { Button } from "@/components/ui/button";
 import { services } from "@/lib/company";
@@ -83,6 +83,31 @@ function ServicesPage() {
         description="Practical help with Microsoft 365 Business Premium, identity and devices, backup, Azure/hybrid, and servers — right-sized for small and mid-sized businesses."
       />
 
+      <section className="section-pad border-b border-border bg-bg-elevated">
+        <div className="container-page">
+          <div className="rounded-xl border border-accent/20 bg-bg p-6 shadow-soft sm:flex sm:items-center sm:justify-between sm:gap-8 sm:p-8">
+            <div className="max-w-2xl">
+              <p className="text-xs font-semibold uppercase tracking-[0.16em] text-accent">
+                Featured
+              </p>
+              <h2 className="mt-2 font-display text-xl font-semibold text-ink sm:text-2xl">
+                Microsoft 365 Business Premium
+              </h2>
+              <p className="mt-2 text-sm leading-relaxed text-fg-muted sm:text-base">
+                The page most growing businesses need first — licences that
+                fit, secure setup, Intune devices, and a clean migration path.
+              </p>
+            </div>
+            <Button asChild className="mt-5 shrink-0 sm:mt-0">
+              <Link to="/microsoft-365">
+                View Business Premium
+                <ArrowRight className="size-4" />
+              </Link>
+            </Button>
+          </div>
+        </div>
+      </section>
+
       <section className="section-pad">
         <div className="container-page">
           <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
@@ -97,6 +122,15 @@ function ServicesPage() {
                 <p className="mt-3 text-sm leading-relaxed text-fg-muted">
                   {s.body}
                 </p>
+                {s.slug === "m365" ? (
+                  <Link
+                    to="/microsoft-365"
+                    className="mt-4 inline-flex items-center gap-1 text-sm font-medium text-accent hover:underline"
+                  >
+                    Business Premium deep dive
+                    <ArrowRight className="size-3.5" />
+                  </Link>
+                ) : null}
               </article>
             ))}
           </div>
