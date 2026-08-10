@@ -58,10 +58,10 @@ const expansions: Record<string, string[]> = {
     "RPO/RTO the business understands",
   ],
   security: [
-    "Identity & access (Entra ID)",
-    "Endpoint security & Intune",
-    "Hardening & baselines",
-    "Practical compliance support",
+    "Zero Trust baselines for growing firms",
+    "Identity, MFA & conditional access",
+    "Device trust via Intune",
+    "Least privilege & admin hygiene",
   ],
   "patch-monitor": [
     "Intune third-party app updates",
@@ -83,7 +83,7 @@ function ServicesPage() {
       <PageHero
         eyebrow="Services"
         title="Better performance. Stronger resilience. Less IT friction."
-        description="Start with a named package when you want a clear scope — including cost-aware patching and monitoring — or use the wider service areas for larger projects."
+        description="Start with a named package when you want a clear scope — Zero Trust, Microsoft 365, infrastructure, backup, or cost-aware patching and monitoring."
       />
 
       <section
@@ -99,7 +99,7 @@ function ServicesPage() {
               id="packages-heading"
               className="mt-3 font-display text-2xl font-semibold tracking-tight text-ink sm:text-3xl"
             >
-              Four clear ways to start
+              Named packages to start
             </h2>
             <p className="mt-3 text-fg-muted">
               Fixed intent and deliverables. Pricing depends on size and
@@ -175,7 +175,9 @@ function ServicesPage() {
                   {"href" in pkg && pkg.href ? (
                     <Button asChild variant="ghost" size="sm" className="w-full">
                       <Link to={pkg.href}>
-                        More on Business Premium
+                        {pkg.href === "/zero-trust"
+                          ? "More on Zero Trust"
+                          : "More on Business Premium"}
                         <ArrowRight className="size-3.5" />
                       </Link>
                     </Button>

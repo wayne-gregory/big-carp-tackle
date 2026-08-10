@@ -16,6 +16,7 @@ import { Route as ContactRouteImport } from './routes/contact'
 import { Route as LoginRouteImport } from './routes/login'
 import { Route as Microsoft365RouteImport } from './routes/microsoft-365'
 import { Route as ServicesRouteImport } from './routes/services'
+import { Route as ZeroTrustRouteImport } from './routes/zero-trust'
 import { Route as ApiContactRouteImport } from './routes/api/contact'
 import { Route as ApiAuthSplatRouteImport } from './routes/api/auth/$'
 
@@ -54,6 +55,11 @@ const ServicesRoute = ServicesRouteImport.update({
   path: '/services',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ZeroTrustRoute = ZeroTrustRouteImport.update({
+  id: '/zero-trust',
+  path: '/zero-trust',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ApiContactRoute = ApiContactRouteImport.update({
   id: '/api/contact',
   path: '/api/contact',
@@ -73,6 +79,7 @@ export interface FileRoutesByFullPath {
   '/login': typeof LoginRoute
   '/microsoft-365': typeof Microsoft365Route
   '/services': typeof ServicesRoute
+  '/zero-trust': typeof ZeroTrustRoute
   '/api/contact': typeof ApiContactRoute
   '/api/auth/$': typeof ApiAuthSplatRoute
 }
@@ -84,6 +91,7 @@ export interface FileRoutesByTo {
   '/login': typeof LoginRoute
   '/microsoft-365': typeof Microsoft365Route
   '/services': typeof ServicesRoute
+  '/zero-trust': typeof ZeroTrustRoute
   '/api/contact': typeof ApiContactRoute
   '/api/auth/$': typeof ApiAuthSplatRoute
 }
@@ -96,6 +104,7 @@ export interface FileRoutesById {
   '/login': typeof LoginRoute
   '/microsoft-365': typeof Microsoft365Route
   '/services': typeof ServicesRoute
+  '/zero-trust': typeof ZeroTrustRoute
   '/api/contact': typeof ApiContactRoute
   '/api/auth/$': typeof ApiAuthSplatRoute
 }
@@ -109,6 +118,7 @@ export interface FileRouteTypes {
     | '/login'
     | '/microsoft-365'
     | '/services'
+    | '/zero-trust'
     | '/api/contact'
     | '/api/auth/$'
   fileRoutesByTo: FileRoutesByTo
@@ -120,6 +130,7 @@ export interface FileRouteTypes {
     | '/login'
     | '/microsoft-365'
     | '/services'
+    | '/zero-trust'
     | '/api/contact'
     | '/api/auth/$'
   id:
@@ -131,6 +142,7 @@ export interface FileRouteTypes {
     | '/login'
     | '/microsoft-365'
     | '/services'
+    | '/zero-trust'
     | '/api/contact'
     | '/api/auth/$'
   fileRoutesById: FileRoutesById
@@ -143,6 +155,7 @@ export interface RootRouteChildren {
   LoginRoute: typeof LoginRoute
   Microsoft365Route: typeof Microsoft365Route
   ServicesRoute: typeof ServicesRoute
+  ZeroTrustRoute: typeof ZeroTrustRoute
   ApiContactRoute: typeof ApiContactRoute
   ApiAuthSplatRoute: typeof ApiAuthSplatRoute
 }
@@ -198,6 +211,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ServicesRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/zero-trust': {
+      id: '/zero-trust'
+      path: '/zero-trust'
+      fullPath: '/zero-trust'
+      preLoaderRoute: typeof ZeroTrustRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/api/contact': {
       id: '/api/contact'
       path: '/api/contact'
@@ -223,6 +243,7 @@ const rootRouteChildren: RootRouteChildren = {
   LoginRoute: LoginRoute,
   Microsoft365Route: Microsoft365Route,
   ServicesRoute: ServicesRoute,
+  ZeroTrustRoute: ZeroTrustRoute,
   ApiContactRoute: ApiContactRoute,
   ApiAuthSplatRoute: ApiAuthSplatRoute,
 }

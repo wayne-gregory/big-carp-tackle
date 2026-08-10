@@ -71,6 +71,31 @@ export const packages = [
     href: "/microsoft-365" as const,
   },
   {
+    slug: "zero-trust-baseline",
+    name: "Zero Trust Baseline",
+    tagline:
+      "Never trust, always verify — sized for real businesses, not a slide deck.",
+    bestFor:
+      "Organisations on Microsoft 365 / hybrid identity that want stronger access control without a multi-year “transformation” programme.",
+    duration: "Typically 1–3 weeks depending on tenant and device estate",
+    outcome:
+      "A working Zero Trust baseline: verified identity, healthier devices, least-privilege access, and a clear roadmap for what comes next.",
+    includes: [
+      "Identity foundations: MFA coverage, risky sign-ins, privileged access hygiene",
+      "Conditional access policies staff can live with (not lockouts by design)",
+      "Device trust signals via Intune where Business Premium or equivalent allows",
+      "Least privilege for admins and shared mailboxes / apps that matter",
+      "Simple network and app access principles (who reaches what, from where)",
+      "Written baseline + next-step roadmap (what to do this quarter vs later)",
+    ],
+    notIncluded: [
+      "Full enterprise Zero Trust architecture programmes across every system",
+      "24/7 SOC or managed detection and response retainers",
+      "Replacing your MSP — we design and implement; they can operate day to day",
+    ],
+    href: "/zero-trust" as const,
+  },
+  {
     slug: "backup-dr-review",
     name: "Backup & DR Review",
     tagline: "Prove you can recover — before you need to.",
@@ -137,8 +162,8 @@ export const services = [
   },
   {
     slug: "security",
-    title: "Security & compliance",
-    body: "Identity, endpoint protection, access control, and hardening — practical security for production environments, not checkbox theatre.",
+    title: "Security & Zero Trust",
+    body: "Identity, devices, least privilege, and conditional access — practical Zero Trust models growing businesses can operate, not enterprise theatre.",
   },
   {
     slug: "patch-monitor",
@@ -156,6 +181,7 @@ export const whyUs = [
   "Experience in complex, production environments",
   "VMware and Azure expertise with Microsoft 365 where it fits",
   "Focus on performance, reliability, and uptime",
+  "Practical Zero Trust — verify access without locking the business out",
   "Cost-aware tooling — open source and efficient platforms where they beat licence bloat",
   "Tailored solutions — not off-the-shelf packages",
   "Clear communication — plain English, no jargon wall",
@@ -211,7 +237,7 @@ export const team = [
       "Infrastructure & VMware",
       "Azure & hybrid",
       "Backup & DR",
-      "Security & identity",
+      "Zero Trust & identity",
       "Microsoft 365 Business Premium",
       "Patching & monitoring",
       "Automation",
@@ -224,7 +250,7 @@ export const platforms = [
   "Azure",
   "Microsoft 365",
   "Intune",
-  "Open-source monitoring",
+  "Zero Trust",
   "Backup & DR",
 ] as const;
 

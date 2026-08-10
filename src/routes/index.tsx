@@ -116,11 +116,11 @@ function Home() {
                 id="pkg-heading"
                 className="mt-3 font-display text-3xl font-semibold tracking-tight text-ink sm:text-4xl"
               >
-                Four clear ways to start
+                Clear ways to start
               </h2>
               <p className="mt-3 text-fg-muted">
-                Named engagements with a defined outcome — including cost-aware
-                patching and monitoring without heavy commercial licence spend.
+                Named engagements with a defined outcome — infrastructure, Microsoft 365,
+                Zero Trust, backup, and cost-aware patching and monitoring.
               </p>
             </div>
             <Button asChild variant="secondary" className="shrink-0">
@@ -130,7 +130,7 @@ function Home() {
               </Link>
             </Button>
           </div>
-          <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
             {packages.map((pkg) => (
               <article key={pkg.slug} className="card-surface flex flex-col p-6">
                 <h3 className="font-display text-lg font-semibold text-ink">
