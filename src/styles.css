@@ -1,0 +1,83 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@theme {
+  /* Brand-aligned with InovaCore logo: cyan → deep blue on navy */
+  --color-bg: #f0f5fa;
+  --color-bg-elevated: #ffffff;
+  --color-bg-subtle: #e4edf6;
+  --color-fg: #1e293b;
+  --color-fg-muted: #475569;
+  --color-fg-subtle: #64748b;
+  --color-border: #d1dbe8;
+  --color-border-strong: #b6c4d6;
+  --color-accent: #0c6099;
+  --color-accent-hover: #094d7a;
+  --color-accent-fg: #ffffff;
+  --color-ink: #0b0628;
+  --color-ring: #0c6099;
+  --color-brand-cyan: #34ecf6;
+
+  --font-display: "Plus Jakarta Sans", "DM Sans", ui-sans-serif, system-ui,
+    sans-serif;
+  --font-sans: "DM Sans", ui-sans-serif, system-ui, -apple-system, sans-serif;
+
+  --radius-sm: 0.5rem;
+  --radius-md: 0.75rem;
+  --radius-lg: 1rem;
+  --radius-xl: 1.5rem;
+
+  --shadow-soft: 0 1px 2px rgb(11 6 40 / 0.04),
+    0 10px 28px rgb(11 6 40 / 0.06);
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+
+  body {
+    @apply bg-bg text-fg font-sans antialiased;
+    font-feature-settings: "ss01" on, "cv11" on;
+    line-height: 1.55;
+    overflow-x: hidden;
+  }
+
+  button:not(:disabled),
+  [role="button"]:not(:disabled) {
+    cursor: pointer;
+  }
+
+  ::selection {
+    background: color-mix(in oklab, var(--color-accent) 22%, transparent);
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .container-page {
+    @apply mx-auto w-full max-w-6xl px-5 sm:px-8;
+  }
+
+  .section-pad {
+    @apply py-16 sm:py-24;
+  }
+}
