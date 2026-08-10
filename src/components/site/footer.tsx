@@ -9,9 +9,9 @@ export function SiteFooter() {
         <div className="max-w-sm space-y-4">
           <Logo tone="on-dark" heightClass="h-10" className="brightness-110" />
           <p className="text-sm leading-relaxed text-white/70">
-            Practical Microsoft 365, cloud, backup, and infrastructure for
-            small and mid-sized businesses — senior help without enterprise-only
-            pricing.
+            Infrastructure & cloud solutions for growing businesses with
+            more complex environments — performance, reliability, and design
+            that actually works.
           </p>
         </div>
 
@@ -31,6 +31,14 @@ export function SiteFooter() {
                   </Link>
                 </li>
               ))}
+              <li>
+                <Link
+                  to="/microsoft-365"
+                  className="text-sm text-white/70 transition-colors hover:text-white"
+                >
+                  Microsoft 365
+                </Link>
+              </li>
             </ul>
           </div>
           <div className="min-w-0">

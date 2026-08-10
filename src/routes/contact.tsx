@@ -13,11 +13,11 @@ import {
 export const Route = createFileRoute("/contact")({
   head: () => ({
     ...pageHead({
-      title: "Contact",
+      title: "Book a consultation",
       description:
-        "Contact InovaCore about Microsoft 365, backup, hybrid cloud, or IT support for your small or mid-sized business. Based in West Sussex, UK.",
+        "Book a consultation with InovaCore about infrastructure, cloud, backup, security, or Microsoft 365. Based in West Sussex, working with businesses across the UK.",
       path: "/contact",
-      keywords: [...coreKeywords, "contact IT consultant", "West Sussex IT"],
+      keywords: [...coreKeywords, "book IT consultation", "infrastructure quote"],
     }),
     scripts: [
       jsonLdScript(
@@ -33,20 +33,20 @@ export const Route = createFileRoute("/contact")({
 
 const faqs = [
   {
-    q: "Is InovaCore only for large enterprises?",
-    a: "No. We focus on small and mid-sized businesses — including Microsoft 365 Business Premium environments — with senior help that is approachable and right-sized.",
+    q: "What should I include in a first message?",
+    a: "Company size, what is painful (performance, cloud, backup, security, Microsoft 365), and whether you want a consultation or a quote. That is enough to start.",
+  },
+  {
+    q: "Do you only work with large enterprises?",
+    a: "No. We focus on growing businesses with more complex environments — including mid-market and Business Premium–scale Microsoft estates.",
   },
   {
     q: "What do you typically help with?",
-    a: "Microsoft 365, identity and devices, backup and continuity, Azure/hybrid, and servers or virtualisation when you still run your own kit.",
-  },
-  {
-    q: "How do we start?",
-    a: "Email hello@inovacore.co.uk or use the form. A short note on company size, current tools, and what is painful is enough for a first reply.",
+    a: "Infrastructure & virtualisation, Azure/hybrid cloud, backup & DR, security & identity, automation, and Microsoft 365 Business Premium when it fits.",
   },
   {
     q: "Can you work alongside an existing IT person or MSP?",
-    a: "Yes. Many clients need a specialist for Microsoft 365, security baselines, or infrastructure projects while keeping their day-to-day support in place.",
+    a: "Yes. Many clients need a specialist for infrastructure or cloud projects while keeping day-to-day support in place.",
   },
 ] as const;
 
@@ -55,8 +55,8 @@ function ContactPage() {
     <SiteShell>
       <PageHero
         eyebrow="Contact"
-        title="Get in touch"
-        description="Whether you are sorting Microsoft 365 Business Premium, backup, hybrid cloud, or servers — start with a short conversation. No enterprise sales process."
+        title="Let’s talk about your IT"
+        description="Book a consultation or request a quote — infrastructure, cloud, backup, security, or Microsoft 365. No enterprise sales process."
       />
 
       <section className="section-pad">
@@ -64,11 +64,12 @@ function ContactPage() {
           <div className="space-y-8 lg:col-span-5">
             <div>
               <h2 className="font-display text-xl font-semibold text-ink">
-                Reach out
+                Book a consultation
               </h2>
               <p className="mt-2 text-sm leading-relaxed text-fg-muted">
-                Tell us roughly how many people you have, what you use today
-                (Microsoft 365, servers, backup), and what you want to improve.
+                Tell us roughly how many people you have, what is in your
+                environment today, and what you want to improve. We will respond
+                with a clear next step.
               </p>
             </div>
 

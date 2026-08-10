@@ -44,7 +44,6 @@ export function pageHead(seo: PageSeo) {
       { name: "author", content: company.legalName },
       { name: "geo.region", content: "GB-WSX" },
       { name: "geo.placename", content: "Sompting, West Sussex" },
-      // Open Graph
       { property: "og:type", content: "website" },
       { property: "og:site_name", content: company.name },
       { property: "og:locale", content: "en_GB" },
@@ -58,7 +57,6 @@ export function pageHead(seo: PageSeo) {
         property: "og:image:alt",
         content: `${company.name} — ${company.tagline}`,
       },
-      // Twitter
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:title", content: title },
       { name: "twitter:description", content: description },
@@ -83,13 +81,6 @@ export function organizationJsonLd() {
         email: company.email,
         description: company.description,
         sameAs: [company.linkedin],
-        foundingLocation: {
-          "@type": "Place",
-          address: {
-            "@type": "PostalAddress",
-            addressCountry: "GB",
-          },
-        },
         identifier: {
           "@type": "PropertyValue",
           name: "Companies House number",
@@ -119,20 +110,17 @@ export function organizationJsonLd() {
         },
         hasOfferCatalog: {
           "@type": "OfferCatalog",
-          name: "IT and cloud services",
+          name: "Infrastructure and cloud services",
           itemListElement: [
-            "Microsoft 365 for business",
-            "Identity, security and devices",
-            "Backup and business continuity",
-            "Azure and hybrid cloud",
-            "Servers and virtualisation",
-            "Automation and ongoing support",
+            "Infrastructure and virtualisation",
+            "Cloud solutions (Azure)",
+            "Backup and disaster recovery",
+            "Security and compliance",
+            "IT automation and optimisation",
+            "Microsoft 365 Business Premium",
           ].map((name) => ({
             "@type": "Offer",
-            itemOffered: {
-              "@type": "Service",
-              name,
-            },
+            itemOffered: { "@type": "Service", name },
           })),
         },
         parentOrganization: { "@id": `${SITE_URL}/#organization` },
@@ -170,14 +158,13 @@ export function jsonLdScript(data: unknown) {
   };
 }
 
-/** Shared marketing keywords (kept moderate — not spammy). */
 export const coreKeywords = [
+  "IT infrastructure consultancy UK",
+  "VMware optimisation",
+  "Azure hybrid cloud",
+  "backup disaster recovery",
   "Microsoft 365 Business Premium",
-  "IT support for small business",
-  "Microsoft 365 consultant UK",
-  "cloud consultancy West Sussex",
-  "backup and disaster recovery",
-  "hybrid cloud",
-  "Entra ID Intune",
-  "SME IT consultant",
+  "IT automation PowerShell",
+  "cloud consultant West Sussex",
+  "growing business IT",
 ];

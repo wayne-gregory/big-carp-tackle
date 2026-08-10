@@ -74,7 +74,7 @@ export function SiteHeader() {
         <div className="hidden items-center gap-3 md:flex">
           <AuthSlot />
           <Button asChild size="sm">
-            <Link to="/contact">Request consultation</Link>
+            <Link to="/contact">Book a consultation</Link>
           </Button>
         </div>
 
@@ -109,7 +109,7 @@ export function SiteHeader() {
               <AuthSlot />
               <Button asChild>
                 <Link to="/contact" onClick={() => setOpen(false)}>
-                  Request consultation
+                  Book a consultation
                 </Link>
               </Button>
             </div>

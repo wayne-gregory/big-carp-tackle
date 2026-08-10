@@ -2,9 +2,11 @@ export const company = {
   name: "InovaCore",
   legalName: "INOVACORE LIMITED",
   companyNumber: "09124480",
-  tagline: "Practical IT, Microsoft 365 & cloud for growing businesses",
+  tagline: "IT infrastructure & cloud solutions that actually work",
   description:
-    "InovaCore helps small and mid-sized companies get reliable Microsoft 365, cloud, backup, and infrastructure — without enterprise-only pricing or complexity. Senior experience, right-sized for the way you actually work.",
+    "We help growing businesses design, secure, and scale their IT — without complexity, downtime, or guesswork. Infrastructure, cloud, backup, and Microsoft 365 for environments that have outgrown DIY setups.",
+  positioning:
+    "Infrastructure & cloud solutions for businesses with more complex environments — fixing performance issues, simplifying estates, and designing infrastructure properly.",
   email: "hello@inovacore.co.uk",
   website: "https://inovacore.co.uk",
   linkedin: "https://www.linkedin.com/in/wayne-gregory/",
@@ -18,121 +20,126 @@ export const company = {
   ],
 } as const;
 
+/** Core service cards — aligned to conversion brief (5 focus areas). */
 export const services = [
   {
-    slug: "m365",
-    title: "Microsoft 365 for business",
-    body: "Business Premium and Microsoft 365 setups that fit your size — email, Teams, SharePoint, Intune, security baselines, and day-to-day admin that keeps staff productive.",
-  },
-  {
-    slug: "identity-security",
-    title: "Identity, security & devices",
-    body: "Entra ID, MFA, conditional access, device management, and sensible security for organisations that need protection without a full security department.",
-  },
-  {
-    slug: "backup-dr",
-    title: "Backup & business continuity",
-    body: "Cloud and hybrid backup, restore testing, and recovery plans so a laptop loss, mailbox issue, or outage does not become a crisis.",
+    slug: "infrastructure",
+    title: "Infrastructure & virtualisation",
+    body: "VMware and server estates that perform — optimisation, health checks, capacity planning, and clean design instead of years of bolt-ons.",
   },
   {
     slug: "cloud-azure",
-    title: "Azure & hybrid cloud",
-    body: "Right-sized Azure, hybrid connections, and migrations when on-prem still matters — clear costs, clear ownership, no unnecessary platform sprawl.",
+    title: "Cloud solutions (Azure)",
+    body: "Azure migrations, hybrid setups, and Microsoft 365 / Business Premium when the cloud should simplify the estate — not add another mess.",
   },
   {
-    slug: "virtualisation",
-    title: "Servers & virtualisation",
-    body: "VMware and on-prem server estates kept healthy — upgrades, performance, storage, and lifecycle — when you still run your own kit or a small private cloud.",
+    slug: "backup-dr",
+    title: "Backup & disaster recovery",
+    body: "Backup design, DR planning, and recovery testing so outages and data loss are handled with a plan — not a scramble.",
   },
   {
-    slug: "automation-support",
-    title: "Automation & ongoing support",
-    body: "Scripting, standard builds, and practical support so routine IT is consistent — ideal for growing teams that need senior help without a large permanent headcount.",
+    slug: "security",
+    title: "Security & compliance",
+    body: "Identity, endpoint protection, access control, and hardening — practical security for production environments, not checkbox theatre.",
   },
+  {
+    slug: "automation",
+    title: "IT automation & optimisation",
+    body: "PowerShell and process automation, reporting, and optimisation so routine work is consistent and performance stays visible.",
+  },
+] as const;
+
+export const whyUs = [
+  "Experience in complex, production environments",
+  "VMware and Azure expertise with Microsoft 365 where it fits",
+  "Focus on performance, reliability, and uptime",
+  "Tailored solutions — not off-the-shelf packages",
+  "Clear communication — plain English, no jargon wall",
+  "Right-sized for growing businesses — not enterprise-only pricing",
 ] as const;
 
 export const projects = [
   {
-    title: "Microsoft 365 Business Premium rollout",
+    title: "Virtualisation performance turnaround",
     summary:
-      "Moved a growing professional firm onto Microsoft 365 Business Premium — mail, Teams, SharePoint, and device standards set so staff could work securely from day one without over-buying licences.",
-    tags: ["Microsoft 365", "Business Premium", "SME"],
-  },
-  {
-    title: "Identity & device security for a multi-site team",
-    summary:
-      "Entra ID, MFA, and Intune baselines for a mid-market organisation — consistent access and managed devices without enterprise tool sprawl.",
-    tags: ["Entra ID", "Intune", "Security"],
-  },
-  {
-    title: "Backup & recovery that staff can trust",
-    summary:
-      "Cloud mailbox and file backup with tested restores — clear RPO/RTO language for the business, not just the tech team.",
-    tags: ["Backup", "Continuity", "M365"],
+      "Stabilised and optimised a VMware estate that had grown messy — clearer capacity, better performance, and a realistic support model for a mid-sized organisation.",
+    tags: ["VMware", "Performance", "Infrastructure"],
   },
   {
     title: "Hybrid cloud without the drama",
     summary:
-      "Connected on-prem servers and Microsoft cloud services for a company that was not ready for a full cloud move — hybrid identity, backup, and a phased path forward.",
-    tags: ["Hybrid", "Azure", "Migration"],
-  },
-  {
-    title: "Server estate tidy-up & virtualisation upgrade",
-    summary:
-      "Stabilised and upgraded a VMware environment for a mid-sized organisation — clearer capacity, better performance, and a realistic support model.",
-    tags: ["VMware", "Servers", "Operations"],
+      "Connected on-prem servers and Microsoft cloud services for a business not ready for a full cloud move — hybrid identity, phased migration, clear costs.",
+    tags: ["Azure", "Hybrid", "Migration"],
   },
   {
     title: "Disaster recovery rebuild",
     summary:
-      "Designed and implemented a practical DR approach for critical systems — runbooks, recovery testing, and recovery times the business could plan around.",
-    tags: ["DR", "Resilience", "Planning"],
+      "Designed and implemented practical DR for critical systems — runbooks, recovery testing, and recovery times the business could plan around.",
+    tags: ["DR", "Backup", "Resilience"],
+  },
+  {
+    title: "Microsoft 365 Business Premium rollout",
+    summary:
+      "Moved a growing firm onto Business Premium — mail, Teams, SharePoint, and device standards without over-buying licences or enterprise bloat.",
+    tags: ["Microsoft 365", "Business Premium", "Security"],
+  },
+  {
+    title: "Identity & endpoint hardening",
+    summary:
+      "Entra ID, MFA, and Intune baselines for a multi-site team — consistent access and managed devices without tool sprawl.",
+    tags: ["Security", "Entra ID", "Intune"],
+  },
+  {
+    title: "Automation that cuts noise",
+    summary:
+      "PowerShell and operational automation for provisioning and reporting — less manual toil, more consistent builds across the estate.",
+    tags: ["Automation", "PowerShell", "Ops"],
   },
 ] as const;
 
 export const team = [
   {
     name: "Wayne Gregory",
-    role: "Founder · IT & cloud consultant",
-    bio: "25+ years in infrastructure and cloud — from Microsoft 365 and hybrid environments for growing businesses, through to larger virtualisation programmes. The goal is simple: senior-quality advice and delivery that small and mid-sized companies can actually afford and operate.",
+    role: "Founder · Infrastructure & cloud consultant",
+    bio: "25+ years designing and optimising infrastructure and hybrid cloud — VMware, Azure, backup/DR, security, and Microsoft 365. Focused on businesses that have outgrown DIY IT and need performance and reliability without unnecessary complexity.",
     focus: [
-      "Microsoft 365 Business Premium",
-      "Identity & devices",
-      "Backup & continuity",
+      "Infrastructure & VMware",
       "Azure & hybrid",
-      "Servers & VMware",
-      "Practical automation",
+      "Backup & DR",
+      "Security & identity",
+      "Microsoft 365 Business Premium",
+      "Automation",
     ],
   },
 ] as const;
 
 export const platforms = [
-  "Microsoft 365",
-  "Business Premium",
-  "Entra ID / Intune",
-  "Azure",
-  "Backup & DR",
   "VMware",
+  "Azure",
+  "Microsoft 365",
+  "Backup & DR",
+  "Entra ID / Intune",
+  "PowerShell",
 ] as const;
 
 export const testimonials = [
   {
     quote:
-      "We finally had Microsoft 365 set up properly for our size of business — secure, usable, and without being sold a stack we did not need.",
+      "Complex infrastructure finally simplified — performance improved and we knew what we owned again.",
     author: "Operations lead",
-    context: "Microsoft 365 rollout",
+    context: "Infrastructure optimisation",
   },
   {
     quote:
-      "Clear advice, no jargon wall, and backup that actually restores. Exactly what a smaller company needs from a senior consultant.",
+      "Clear advice, no jargon wall, and DR that actually restores. Exactly what a growing company needs.",
     author: "Managing director",
-    context: "Backup & continuity",
+    context: "Backup & DR",
   },
   {
     quote:
-      "Hybrid cloud and identity sorted without a six-month transformation programme. Practical, paced, and cost-aware.",
+      "Hybrid cloud and Microsoft 365 sorted without a six-month transformation programme. Practical and cost-aware.",
     author: "IT coordinator",
-    context: "Hybrid & identity",
+    context: "Cloud & Microsoft 365",
   },
 ] as const;
 
