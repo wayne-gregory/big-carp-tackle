@@ -21,7 +21,7 @@ function AboutPage() {
       <PageHero
         eyebrow="About"
         title="Built for UK carp anglers"
-        description="Big Carp Fishing is a second-hand tackle shop specialising in carp gear — honest grades, fair prices, UK only."
+        description="Big Carp Tackle (BCT) is a second-hand tackle shop specialising in carp gear — honest grades, fair prices, UK only."
       />
       <section className="section-pad pt-8">
         <div className="container-page max-w-3xl space-y-5 text-fg-muted">
