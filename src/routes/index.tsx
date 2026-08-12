@@ -26,13 +26,15 @@ function HomePage() {
         <div className="absolute inset-0">
           <img
             src="/hero.jpg"
-            alt="Misty UK carp lake at dawn with fishing rod on the bank"
-            className="h-full w-full object-cover opacity-50"
-            width={1176}
-            height={784}
+            alt="Burghfield — famous UK big carp water, calm lake with wooded islands"
+            className="h-full w-full object-cover object-center opacity-55"
+            width={1920}
+            height={1087}
             fetchPriority="high"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-ink via-ink/90 to-ink/45" />
+          {/* Stronger left scrim for bright sky so logo/type stay crisp */}
+          <div className="absolute inset-0 bg-gradient-to-r from-ink via-ink/88 to-ink/40" />
+          <div className="absolute inset-0 bg-gradient-to-t from-ink/70 via-transparent to-ink/25" />
         </div>
         <div className="container-page relative grid gap-10 py-16 sm:py-20 lg:grid-cols-12 lg:items-center lg:py-24">
           <div className="lg:col-span-7">
@@ -68,6 +70,9 @@ function HomePage() {
                 <Link to="/sell">Sell your gear</Link>
               </Button>
             </div>
+            <p className="mt-8 font-sans text-xs tracking-normal text-on-ink-subtle">
+              Hero: Burghfield — legendary UK big carp water
+            </p>
           </div>
         </div>
       </section>
