@@ -7,7 +7,7 @@ export const shop = {
   tagline: "Second hand carp fishing tackle, UK only",
   description:
     "Buy and sell second hand carp fishing tackle across the United Kingdom — pre-owned rods, reels, alarms, bags and more, checked and ready for the bank.",
-  email: "hello@bigcarpfishing.co.uk",
+  email: "roy_allen@hotmail.co.uk",
   region: "United Kingdom",
   shippingNote:
     "UK mainland shipping from £4.95. Collection by arrangement. No international sales.",
