@@ -3,5 +3,8 @@ Allow: /
 Disallow: /cart
 Disallow: /checkout
 Disallow: /login
+Disallow: /api/
+Disallow: /products/dummy/
 
+# Primary sitemap (money pages only — dummy catalogue is noindex)
 Sitemap: https://www.bigcarpfishing.co.uk/sitemap.xml

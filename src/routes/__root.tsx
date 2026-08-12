@@ -8,7 +8,12 @@ import { Toaster } from "sonner";
 import { AuthProvider } from "@/lib/auth/provider";
 import { CreatedWithGrokBanner } from "@/components/created-with-grok-banner";
 import { shop } from "@/lib/shop";
-import { jsonLdScript, organizationJsonLd, SITE_URL } from "@/lib/seo";
+import {
+  jsonLdScript,
+  organizationJsonLd,
+  SITE_URL,
+  websiteJsonLd,
+} from "@/lib/seo";
 import appCss from "../styles.css?url";
 
 export const Route = createRootRoute({
@@ -24,6 +29,7 @@ export const Route = createRootRoute({
       { property: "og:image:width", content: "1200" },
       { property: "og:image:height", content: "630" },
       { property: "og:site_name", content: shop.name },
+      { property: "og:locale", content: "en_GB" },
     ],
     links: [
       { rel: "icon", type: "image/png", href: "/favicon.png" },
@@ -42,7 +48,10 @@ export const Route = createRootRoute({
         href: "https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap",
       },
     ],
-    scripts: [jsonLdScript(organizationJsonLd())],
+    scripts: [
+      jsonLdScript(organizationJsonLd()),
+      jsonLdScript(websiteJsonLd()),
+    ],
   }),
   component: RootDocument,
 });

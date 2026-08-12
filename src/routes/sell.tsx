@@ -1,4 +1,4 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -25,9 +25,9 @@ type FormValues = z.infer<typeof schema>;
 export const Route = createFileRoute("/sell")({
   head: () =>
     pageHead({
-      title: `Sell carp tackle | ${shop.name}`,
+      title: `Sell second hand carp fishing tackle | ${shop.name}`,
       description:
-        "Sell your second-hand carp gear in the UK. Fair offers or list with us.",
+        "Sell second hand carp fishing tackle in the UK. Fair buy-in offers or list with Big Carp Fishing — rods, reels, alarms and more.",
       path: "/sell",
     }),
   component: SellPage,
@@ -40,7 +40,7 @@ function SellPage() {
       name: "",
       email: "",
       item: "",
-      condition: "Very good",
+      condition: "",
       asking: "",
       details: "",
     },
@@ -50,71 +50,94 @@ function SellPage() {
     <SiteShell>
       <PageHero
         eyebrow="Sell"
-        title="Sell your carp tackle"
-        description="Clear the shed of rods, reels and luggage that still has life. We buy outright or list on commission."
+        title="Sell second hand carp fishing tackle"
+        description="Clear space in the garage. We buy quality used carp gear or list it for UK anglers with transparent fees."
       />
-      <section className="section-pad pt-8">
-        <div className="container-page grid gap-10 lg:grid-cols-12">
-          <div className="space-y-4 text-fg-muted lg:col-span-5">
-            <h2 className="font-display text-2xl font-semibold text-fg">
-              What we take
-            </h2>
+
+      <section className="section-pad pt-0">
+        <div className="container-page grid gap-10 lg:grid-cols-5">
+          <div className="space-y-4 text-fg-muted lg:col-span-2">
+            <p className="text-base leading-relaxed">
+              Got unused{" "}
+              <strong className="font-semibold text-fg">
+                second hand carp fishing tackle
+              </strong>
+              ? We specialise in carp rods, reels, alarms, luggage and bankside
+              kit for the UK market.
+            </p>
             <ul className="list-disc space-y-2 pl-5 text-sm">
-              <li>Carp rods, reels, alarms and indicators</li>
-              <li>Bedchairs, chairs, bivvies and luggage</li>
-              <li>Nets, mats, scales and terminal tackle lots</li>
-              <li>Honest condition — Fair and up is fine</li>
+              <li>Photos + brand / model help us price quickly</li>
+              <li>Honest condition notes (scuffs, repairs, missing parts)</li>
+              <li>Buy-in offer or commission listing — your choice</li>
+              <li>UK sellers only</li>
             </ul>
             <p className="text-sm">
-              Email photos to{" "}
+              Prefer a quick chat?{" "}
+              <Link to="/contact" className="font-medium text-accent underline">
+                Contact us
+              </Link>{" "}
+              or email{" "}
               <a
-                className="font-medium text-accent underline"
                 href={`mailto:${shop.email}`}
+                className="font-medium text-accent underline"
               >
                 {shop.email}
-              </a>{" "}
-              or use the form — we’ll reply within 1–2 working days.
+              </a>
+              .
             </p>
           </div>
+
           <form
-            className="card-surface space-y-4 p-6 lg:col-span-7"
+            className="card-surface space-y-4 p-6 lg:col-span-3"
             onSubmit={form.handleSubmit(() => {
-              toast.success("Thanks — we’ll be in touch");
+              toast.success("Thanks — we’ll reply by email shortly.");
               form.reset();
             })}
           >
             <div className="grid gap-4 sm:grid-cols-2">
               <div className="space-y-1.5">
-                <Label>Name</Label>
-                <Input {...form.register("name")} />
+                <Label htmlFor="name">Name</Label>
+                <Input id="name" {...form.register("name")} />
+                {form.formState.errors.name ? (
+                  <p className="text-xs text-sale">Required</p>
+                ) : null}
               </div>
               <div className="space-y-1.5">
-                <Label>Email</Label>
-                <Input type="email" {...form.register("email")} />
+                <Label htmlFor="email">Email</Label>
+                <Input id="email" type="email" {...form.register("email")} />
+                {form.formState.errors.email ? (
+                  <p className="text-xs text-sale">Valid email required</p>
+                ) : null}
               </div>
             </div>
             <div className="space-y-1.5">
-              <Label>Item(s)</Label>
+              <Label htmlFor="item">Item (brand & model)</Label>
               <Input
-                placeholder="e.g. Fox Horizon X3 pair + Shimano reels"
+                id="item"
+                placeholder="e.g. Fox Horizon X4 12ft pair"
                 {...form.register("item")}
               />
             </div>
             <div className="grid gap-4 sm:grid-cols-2">
               <div className="space-y-1.5">
-                <Label>Condition</Label>
-                <Input {...form.register("condition")} />
+                <Label htmlFor="condition">Condition</Label>
+                <Input
+                  id="condition"
+                  placeholder="Excellent / Good / Fair"
+                  {...form.register("condition")}
+                />
               </div>
               <div className="space-y-1.5">
-                <Label>Asking price (optional)</Label>
-                <Input placeholder="£" {...form.register("asking")} />
+                <Label htmlFor="asking">Asking price (optional)</Label>
+                <Input id="asking" placeholder="£" {...form.register("asking")} />
               </div>
             </div>
             <div className="space-y-1.5">
-              <Label>Details</Label>
+              <Label htmlFor="details">Details</Label>
               <Textarea
+                id="details"
                 rows={5}
-                placeholder="Age, usage, any damage, location…"
+                placeholder="What’s included, wear notes, location in the UK…"
                 {...form.register("details")}
               />
               {form.formState.errors.details ? (
@@ -124,7 +147,7 @@ function SellPage() {
               ) : null}
             </div>
             <Button type="submit" size="lg">
-              Submit listing enquiry
+              Send sell enquiry
             </Button>
           </form>
         </div>

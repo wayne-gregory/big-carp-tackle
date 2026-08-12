@@ -10,7 +10,7 @@ import { BrandLogo } from "@/components/shop/logo";
 import { ProductCard } from "@/components/shop/product-card";
 import { SiteShell } from "@/components/shop/shell";
 import { Button } from "@/components/ui/button";
-import { pageHead } from "@/lib/seo";
+import { faqJsonLd, jsonLdScript, pageHead, shopFaqs } from "@/lib/seo";
 import { categories, products, shop } from "@/lib/shop";
 
 export const Route = createFileRoute("/")({
@@ -19,6 +19,7 @@ export const Route = createFileRoute("/")({
       title: `${shop.name} | Second hand carp fishing tackle UK`,
       description: shop.description,
       path: "/",
+      scripts: [jsonLdScript(faqJsonLd(shopFaqs))],
     }),
   component: HomePage,
 });
@@ -32,7 +33,7 @@ function HomePage() {
         <div className="absolute inset-0 bg-ink">
           <img
             src="/hero.jpg"
-            alt="Burghfield — famous UK big carp water, calm lake with wooded islands"
+            alt="Burghfield lake — UK big carp water representing second hand carp fishing tackle for the bank"
             className="h-full w-full object-cover object-center opacity-55"
             width={1920}
             height={1087}
@@ -56,9 +57,10 @@ function HomePage() {
               Second hand carp fishing tackle
             </h1>
             <p className="mt-5 max-w-xl font-sans text-base leading-relaxed tracking-normal text-on-ink-muted sm:text-lg">
-              Quality pre-owned carp gear with honest condition grades and fair
-              prices. Rods, reels, alarms, bags and more — buy and sell second
-              hand carp fishing tackle across mainland Britain.
+              Buy and sell quality pre-owned carp gear with honest condition
+              grades and fair UK prices. Rods, reels, alarms, bags, nets and
+              more — second hand carp fishing tackle shipped across mainland
+              Britain.
             </p>
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
               <Button asChild size="lg">
@@ -110,6 +112,43 @@ function HomePage() {
         </div>
       </section>
 
+      <section className="section-pad border-b border-border">
+        <div className="container-page max-w-3xl">
+          <h2 className="font-display text-3xl tracking-wide text-fg sm:text-4xl">
+            Why buy second hand carp tackle from us
+          </h2>
+          <div className="mt-5 space-y-4 font-sans text-base leading-relaxed text-fg-muted">
+            <p>
+              New carp kit is expensive. Plenty of solid rods, reels and luggage
+              sits unused after anglers upgrade.{" "}
+              <strong className="font-semibold text-fg">
+                Big Carp Fishing
+              </strong>{" "}
+              specialises in{" "}
+              <strong className="font-semibold text-fg">
+                second hand carp fishing tackle
+              </strong>{" "}
+              for UK venues — honest grades, clear photos and prices that make
+              sense for real bankside use.
+            </p>
+            <p>
+              We are not a general outdoor warehouse. The focus is carp: big
+              pits, progressive rods, bite alarms, nets, beds and luggage that
+              survives a season. Shop online, pay in GBP, and receive tracked
+              mainland delivery or arrange collection.
+            </p>
+          </div>
+          <div className="mt-6 flex flex-wrap gap-3">
+            <Button asChild>
+              <Link to="/shop">Shop second hand tackle</Link>
+            </Button>
+            <Button asChild variant="secondary">
+              <Link to="/how-it-works">How buying works</Link>
+            </Button>
+          </div>
+        </div>
+      </section>
+
       <section className="section-pad">
         <div className="container-page">
           <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
@@ -146,7 +185,7 @@ function HomePage() {
             Shop by category
           </h2>
           <p className="mt-2 max-w-xl font-sans text-fg-muted">
-            From big pits to bedchairs — browse the second hand carp tackle that
+            From big pits to bedchairs — browse second hand carp tackle that
             actually gets used on UK waters.
           </p>
           <div className="mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
@@ -168,7 +207,25 @@ function HomePage() {
         </div>
       </section>
 
-      <section className="section-pad">
+      <section className="section-pad border-t border-border">
+        <div className="container-page max-w-3xl">
+          <h2 className="font-display text-3xl tracking-wide text-fg sm:text-4xl">
+            Frequently asked questions
+          </h2>
+          <dl className="mt-8 space-y-6">
+            {shopFaqs.map((f) => (
+              <div key={f.question} className="border-b border-border pb-6 last:border-0">
+                <dt className="font-semibold text-fg">{f.question}</dt>
+                <dd className="mt-2 text-sm leading-relaxed text-fg-muted sm:text-base">
+                  {f.answer}
+                </dd>
+              </div>
+            ))}
+          </dl>
+        </div>
+      </section>
+
+      <section className="section-pad pt-0">
         <div className="container-page">
           <div className="overflow-hidden rounded-2xl border border-border bg-ink text-on-ink shadow-hero sm:grid sm:grid-cols-2">
             <div className="p-8 sm:p-10">

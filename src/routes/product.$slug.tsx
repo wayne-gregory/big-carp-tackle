@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button";
 import { useCart } from "@/lib/cart";
 import {
   breadcrumbJsonLd,
+  isDummyProduct,
   jsonLdScript,
   pageHead,
   productJsonLd,
@@ -34,16 +35,21 @@ export const Route = createFileRoute("/product/$slug")({
         path: "/shop",
       });
     }
+    const dummy = isDummyProduct(product);
     return pageHead({
       title: `${product.title} | ${shop.name}`,
       description: product.description,
       path: `/product/${product.slug}`,
       image: product.image,
       type: "product",
-      scripts: [
-        jsonLdScript(productJsonLd(product)),
-        jsonLdScript(breadcrumbJsonLd(product)),
-      ],
+      // Keep test catalogue out of Google until real stock is imported
+      noindex: dummy,
+      scripts: dummy
+        ? undefined
+        : [
+            jsonLdScript(productJsonLd(product)),
+            jsonLdScript(breadcrumbJsonLd(product)),
+          ],
     });
   },
   component: ProductPage,
@@ -70,9 +76,26 @@ function ProductPage() {
     <SiteShell>
       <div className="border-b border-border bg-bg-subtle/40">
         <div className="container-page py-4">
+          <nav aria-label="Breadcrumb" className="text-sm text-fg-muted">
+            <ol className="flex flex-wrap items-center gap-1.5">
+              <li>
+                <Link to="/" className="hover:text-fg">
+                  Home
+                </Link>
+              </li>
+              <li aria-hidden>/</li>
+              <li>
+                <Link to="/shop" className="hover:text-fg">
+                  Shop
+                </Link>
+              </li>
+              <li aria-hidden>/</li>
+              <li className="font-medium text-fg line-clamp-1">{product.title}</li>
+            </ol>
+          </nav>
           <Link
             to="/shop"
-            className="inline-flex items-center gap-1.5 text-sm font-medium text-fg-muted hover:text-fg"
+            className="mt-3 inline-flex items-center gap-1.5 text-sm font-medium text-fg-muted hover:text-fg"
           >
             <ArrowLeft className="size-4" />
             Back to shop
@@ -86,7 +109,7 @@ function ProductPage() {
             {product.image ? (
               <img
                 src={product.image}
-                alt={product.title}
+                alt={`${product.brand} ${product.title} — second hand carp tackle`}
                 className="max-h-96 w-full object-contain"
               />
             ) : (

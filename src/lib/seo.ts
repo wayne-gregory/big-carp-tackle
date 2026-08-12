@@ -11,12 +11,24 @@ const conditionMap: Record<Product["condition"], string> = {
   Fair: "https://schema.org/UsedCondition",
 };
 
+/** Dummy/test catalogue rows — keep in UI, keep out of Google */
+export function isDummyProduct(product: Product): boolean {
+  if (product.image?.includes("/products/dummy")) return true;
+  const d = product.description.toLowerCase();
+  return (
+    d.includes("test listing") ||
+    d.includes("dummy stock") ||
+    d.includes("not a real sale")
+  );
+}
+
 export function pageHead(opts: {
   title: string;
   description: string;
   path?: string;
   image?: string;
   type?: "website" | "product";
+  noindex?: boolean;
   scripts?: ReturnType<typeof jsonLdScript>[];
 }) {
   const url = `${SITE_URL}${opts.path ?? "/"}`;
@@ -26,21 +38,31 @@ export function pageHead(opts: {
       : `${SITE_URL}${opts.image}`
     : `${SITE_URL}/og.jpg`;
 
+  const meta: Array<Record<string, string>> = [
+    { title: opts.title },
+    { name: "description", content: opts.description },
+    { property: "og:title", content: opts.title },
+    { property: "og:description", content: opts.description },
+    { property: "og:url", content: url },
+    { property: "og:type", content: opts.type ?? "website" },
+    { property: "og:image", content: image },
+    { property: "og:site_name", content: shop.name },
+    { property: "og:locale", content: "en_GB" },
+    { name: "twitter:card", content: "summary_large_image" },
+    { name: "twitter:title", content: opts.title },
+    { name: "twitter:description", content: opts.description },
+    { name: "twitter:image", content: image },
+    { name: "geo.region", content: "GB" },
+    { name: "geo.placename", content: "United Kingdom" },
+  ];
+
+  if (opts.noindex) {
+    meta.push({ name: "robots", content: "noindex, nofollow" });
+    meta.push({ name: "googlebot", content: "noindex, nofollow" });
+  }
+
   return {
-    meta: [
-      { title: opts.title },
-      { name: "description", content: opts.description },
-      { property: "og:title", content: opts.title },
-      { property: "og:description", content: opts.description },
-      { property: "og:url", content: url },
-      { property: "og:type", content: opts.type ?? "website" },
-      { property: "og:image", content: image },
-      { property: "og:site_name", content: shop.name },
-      { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:title", content: opts.title },
-      { name: "twitter:description", content: opts.description },
-      { name: "twitter:image", content: image },
-    ],
+    meta,
     links: [{ rel: "canonical", href: url }],
     scripts: opts.scripts,
   };
@@ -57,18 +79,91 @@ export function organizationJsonLd() {
   return {
     "@context": "https://schema.org",
     "@type": "Store",
+    "@id": `${SITE_URL}/#store`,
     name: shop.name,
-    alternateName: shop.shortName,
+    alternateName: [shop.shortName, "Big Carp Tackle"],
     url: SITE_URL,
     description: shop.description,
     email: shop.email,
-    areaServed: "GB",
+    areaServed: {
+      "@type": "Country",
+      name: "United Kingdom",
+    },
     currenciesAccepted: "GBP",
     paymentAccepted: "Bank transfer, card (at checkout)",
+    priceRange: "££",
     logo: `${SITE_URL}/brand/logo-full.png`,
     image: `${SITE_URL}/brand/logo-basic.png`,
+    sameAs: [],
   };
 }
+
+/** Helps Google understand the site + on-site search */
+export function websiteJsonLd() {
+  return {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "@id": `${SITE_URL}/#website`,
+    name: shop.name,
+    url: SITE_URL,
+    description: shop.description,
+    inLanguage: "en-GB",
+    publisher: { "@id": `${SITE_URL}/#store` },
+    potentialAction: {
+      "@type": "SearchAction",
+      target: {
+        "@type": "EntryPoint",
+        urlTemplate: `${SITE_URL}/shop?q={search_term_string}`,
+      },
+      "query-input": "required name=search_term_string",
+    },
+  };
+}
+
+export function faqJsonLd(
+  faqs: { question: string; answer: string }[],
+) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: faqs.map((f) => ({
+      "@type": "Question",
+      name: f.question,
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: f.answer,
+      },
+    })),
+  };
+}
+
+export const shopFaqs: { question: string; answer: string }[] = [
+  {
+    question: "Where can I buy second hand carp fishing tackle in the UK?",
+    answer:
+      "Big Carp Fishing sells second hand carp fishing tackle online across the United Kingdom. Browse rods, reels, alarms, bags, nets, beds and accessories with honest condition grades and mainland UK shipping.",
+  },
+  {
+    question: "Do you ship second hand carp tackle outside the UK?",
+    answer:
+      "No. We only sell and ship within the United Kingdom (mainland shipping from £4.95, collection by arrangement). International orders are not accepted.",
+  },
+  {
+    question: "How is condition graded on used carp gear?",
+    answer:
+      "Every listing is graded Excellent, Very good, Good or Fair with clear notes. Excellent means like new or barely used; Fair means heavy wear but still usable and priced accordingly.",
+  },
+  {
+    question: "Can I sell my carp fishing tackle to you?",
+    answer:
+      "Yes. Use the Sell page to send photos, brand, model and honest wear notes. We can make a fair buy-in offer or list items on your behalf with transparent fees.",
+  },
+  {
+    question: "Is payment taken online at checkout?",
+    answer:
+      "Orders can be placed on the site. Card payments via Stripe can be enabled for live sales; until then we confirm payment by email (bank transfer or payment link) before dispatch.",
+  },
+];
 
 /**
  * Product + Offer JSON-LD for listing pages (Google rich results style).
@@ -170,18 +265,20 @@ function priceValidUntil(): string {
   return d.toISOString().slice(0, 10);
 }
 
-/** ItemList for shop listing pages */
+/** ItemList for shop listing pages — real stock only when possible */
 export function itemListJsonLd(
   items: Product[],
   opts: { name: string; path: string },
 ) {
+  const list = items.filter((p) => !isDummyProduct(p));
+  const source = list.length > 0 ? list : items;
   return {
     "@context": "https://schema.org",
     "@type": "ItemList",
     name: opts.name,
     url: `${SITE_URL}${opts.path}`,
-    numberOfItems: items.length,
-    itemListElement: items.slice(0, 50).map((p, i) => ({
+    numberOfItems: source.length,
+    itemListElement: source.slice(0, 50).map((p, i) => ({
       "@type": "ListItem",
       position: i + 1,
       url: `${SITE_URL}/product/${p.slug}`,
