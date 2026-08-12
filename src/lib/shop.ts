@@ -1,6 +1,6 @@
 export const shop = {
-  name: "Big Carp Tackle",
-  shortName: "BCT",
+  name: "Big Carp Fishing",
+  shortName: "BCF",
   domain: "bigcarpfishing.co.uk",
   tagline: "Quality second-hand carp tackle, UK only",
   description:

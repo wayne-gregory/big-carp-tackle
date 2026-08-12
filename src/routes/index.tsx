@@ -18,7 +18,6 @@ export const Route = createFileRoute("/")({
 });
 
 function HomePage() {
-  // Prefer featured; ensure Delkim EV-R shows first when featured
   const featured = products.filter((p) => p.featured).slice(0, 4);
 
   return (
@@ -37,8 +36,11 @@ function HomePage() {
         </div>
         <div className="container-page relative grid gap-10 py-16 sm:py-20 lg:grid-cols-12 lg:items-center lg:py-24">
           <div className="lg:col-span-7">
-            <div className="mb-6 max-w-xs sm:max-w-sm">
-              <BrandLogo variant="header" className="h-14 w-auto sm:h-16" />
+            <div className="mb-6 max-w-md">
+              <BrandLogo
+                variant="header"
+                className="h-12 w-auto max-w-[min(340px,88vw)] sm:h-14"
+              />
             </div>
             <p className="text-xs font-semibold uppercase tracking-[0.18em] text-on-ink-accent">
               UK second-hand carp tackle · {shop.shortName}
@@ -178,8 +180,8 @@ function HomePage() {
             <div className="relative flex min-h-48 items-center justify-center bg-ink-elevated sm:min-h-0">
               <img
                 src="/brand/logo-basic.png"
-                alt=""
-                className="max-h-48 w-auto object-contain p-8 opacity-95"
+                alt={shop.name}
+                className="max-h-40 w-auto max-w-[90%] object-contain p-6 sm:max-h-48"
               />
             </div>
           </div>

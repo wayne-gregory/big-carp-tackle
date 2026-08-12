@@ -21,12 +21,12 @@ function AboutPage() {
       <PageHero
         eyebrow="About"
         title="Built for UK carp anglers"
-        description="Big Carp Tackle (BCT) is a second-hand tackle shop specialising in carp gear — honest grades, fair prices, UK only."
+        description="Big Carp Fishing is a second-hand tackle shop specialising in carp gear — honest grades, fair prices, UK only."
       />
       <section className="section-pad pt-8">
         <div className="container-page max-w-3xl space-y-5 text-fg-muted">
-          <div className="mb-6 rounded-xl border border-border bg-bg-elevated p-6 shadow-soft">
-            <BrandLogo variant="full" className="h-16 w-auto" />
+          <div className="mb-6 flex justify-center rounded-xl border border-border bg-ink p-6 shadow-soft sm:justify-start">
+            <BrandLogo variant="header" className="h-12 w-auto sm:h-14" />
           </div>
           <p className="text-base leading-relaxed">
             New kit is expensive. Plenty of solid rods, reels and luggage sits

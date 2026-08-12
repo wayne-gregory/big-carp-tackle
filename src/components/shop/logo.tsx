@@ -6,11 +6,11 @@ type Variant = "header" | "footer" | "mark" | "full";
 const sources: Record<Variant, { src: string; className: string }> = {
   header: {
     src: "/brand/logo-header.png",
-    className: "h-10 w-auto sm:h-11",
+    className: "h-9 w-auto sm:h-10",
   },
   footer: {
     src: "/brand/logo-header.png",
-    className: "h-12 w-auto",
+    className: "h-11 w-auto max-w-[min(280px,80vw)]",
   },
   mark: {
     src: "/brand/logo-icon-light.png",
@@ -18,7 +18,7 @@ const sources: Record<Variant, { src: string; className: string }> = {
   },
   full: {
     src: "/brand/logo-full.png",
-    className: "h-14 w-auto",
+    className: "h-12 w-auto sm:h-14 max-w-full",
   },
 };
 
@@ -35,8 +35,8 @@ export function BrandLogo({
       src={conf.src}
       alt={shop.name}
       className={cn(conf.className, "object-contain object-left", className)}
-      width={variant === "mark" ? 36 : 180}
-      height={variant === "mark" ? 36 : 44}
+      width={variant === "mark" ? 36 : 220}
+      height={variant === "mark" ? 36 : 40}
       decoding="async"
     />
   );
