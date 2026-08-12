@@ -5,7 +5,12 @@ import { PageHero, SiteShell } from "@/components/shop/shell";
 import { ProductCard } from "@/components/shop/product-card";
 import { Button } from "@/components/ui/button";
 import { useCart } from "@/lib/cart";
-import { pageHead } from "@/lib/seo";
+import {
+  breadcrumbJsonLd,
+  jsonLdScript,
+  pageHead,
+  productJsonLd,
+} from "@/lib/seo";
 import {
   categoryLabel,
   formatPrice,
@@ -33,6 +38,12 @@ export const Route = createFileRoute("/product/$slug")({
       title: `${product.title} | ${shop.name}`,
       description: product.description,
       path: `/product/${product.slug}`,
+      image: product.image,
+      type: "product",
+      scripts: [
+        jsonLdScript(productJsonLd(product)),
+        jsonLdScript(breadcrumbJsonLd(product)),
+      ],
     });
   },
   component: ProductPage,

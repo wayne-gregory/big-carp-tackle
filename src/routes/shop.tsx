@@ -2,10 +2,11 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { z } from "zod";
 import { ProductCard } from "@/components/shop/product-card";
 import { PageHero, SiteShell } from "@/components/shop/shell";
-import { pageHead } from "@/lib/seo";
+import { itemListJsonLd, jsonLdScript, pageHead } from "@/lib/seo";
 import {
   categories,
   getByCategory,
+  products,
   shop,
   type Category,
 } from "@/lib/shop";
@@ -37,6 +38,14 @@ export const Route = createFileRoute("/shop")({
       description:
         "Browse pre-owned carp rods, reels, alarms, bags and more. UK shipping only. Honest condition grades.",
       path: "/shop",
+      scripts: [
+        jsonLdScript(
+          itemListJsonLd(products, {
+            name: "Second-hand carp tackle",
+            path: "/shop",
+          }),
+        ),
+      ],
     }),
   component: ShopPage,
 });
@@ -61,14 +70,15 @@ function ShopPage() {
       <PageHero
         eyebrow="Shop"
         title="Second-hand carp tackle"
-        description="Filter by category or search brand and model. All prices in GBP. UK mainland only."
+        description="Honest grades, fair UK prices. Filter by category or search brand and model."
       />
-      <section className="section-pad pt-8">
+
+      <section className="section-pad pt-0">
         <div className="container-page">
-          <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
+          <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
             <div className="flex flex-wrap gap-2">
               <FilterChip
-                active={category === "all" || !category}
+                active={!category || category === "all"}
                 onClick={() =>
                   navigate({ search: (prev) => ({ ...prev, category: "all" }) })
                 }
@@ -89,22 +99,23 @@ function ShopPage() {
                 </FilterChip>
               ))}
             </div>
-            <label className="block w-full max-w-xs">
-              <span className="sr-only">Search</span>
-              <input
-                type="search"
-                placeholder="Search brand or model…"
-                defaultValue={q}
-                className="h-11 w-full rounded-md border border-border bg-bg-elevated px-3 text-sm text-fg outline-none ring-ring focus:ring-2"
-                onChange={(e) => {
-                  const value = e.target.value;
-                  navigate({
-                    search: (prev) => ({ ...prev, q: value }),
-                    replace: true,
-                  });
-                }}
-              />
+            <label className="sr-only" htmlFor="shop-q">
+              Search
             </label>
+            <input
+              id="shop-q"
+              type="search"
+              placeholder="Search brand or model…"
+              defaultValue={q}
+              onChange={(e) => {
+                const value = e.target.value;
+                navigate({
+                  search: (prev) => ({ ...prev, q: value }),
+                  replace: true,
+                });
+              }}
+              className="h-10 w-full rounded-md border border-border bg-bg-elevated px-3 text-sm text-fg shadow-sm outline-none ring-ring placeholder:text-fg-subtle focus-visible:ring-2 sm:max-w-xs"
+            />
           </div>
 
           <p className="mt-6 text-sm text-fg-muted">
@@ -112,20 +123,20 @@ function ShopPage() {
           </p>
 
           {list.length === 0 ? (
-            <div className="card-surface mt-6 p-10 text-center">
-              <p className="font-display text-xl font-semibold text-fg">
-                Nothing matches
-              </p>
-              <p className="mt-2 text-sm text-fg-muted">
-                Try another category or{" "}
-                <Link to="/shop" search={{ category: "all", q: "" }} className="text-accent underline">
-                  clear filters
-                </Link>
-                .
-              </p>
-            </div>
+            <p className="mt-10 text-fg-muted">
+              No matches.{" "}
+              <button
+                type="button"
+                className="font-medium text-accent underline"
+                onClick={() =>
+                  navigate({ search: { category: "all", q: "" } })
+                }
+              >
+                Clear filters
+              </button>
+            </p>
           ) : (
-            <div className="mt-6 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+            <div className="mt-6 grid gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
               {list.map((p) => (
                 <ProductCard key={p.id} product={p} />
               ))}
@@ -138,23 +149,23 @@ function ShopPage() {
 }
 
 function FilterChip({
-  children,
   active,
   onClick,
+  children,
 }: {
-  children: React.ReactNode;
-  active?: boolean;
+  active: boolean;
   onClick: () => void;
+  children: React.ReactNode;
 }) {
   return (
     <button
       type="button"
       onClick={onClick}
       className={cn(
-        "rounded-full border px-3.5 py-2 text-sm font-medium transition-colors",
+        "rounded-full border px-3 py-1.5 text-xs font-semibold transition-colors",
         active
           ? "border-accent bg-accent text-accent-fg"
-          : "border-border bg-bg-elevated text-fg-muted hover:border-border-strong hover:text-fg",
+          : "border-border bg-bg-elevated text-fg-muted hover:border-accent/40 hover:text-fg",
       )}
     >
       {children}
