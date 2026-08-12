@@ -42,12 +42,23 @@ export function ProductCard({ product }: { product: Product }) {
         params={{ slug: product.slug }}
         className="block"
       >
-        <div className="relative flex aspect-[4/3] items-center justify-center bg-bg-subtle">
-          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_30%_20%,rgb(31_107_74/0.12),transparent_55%)]" />
-          <Icon
-            className="relative size-14 text-accent/70 transition-transform duration-200 group-hover:scale-105"
-            strokeWidth={1.25}
-          />
+        <div className="relative flex aspect-[4/3] items-center justify-center overflow-hidden bg-bg-subtle">
+          {product.image ? (
+            <img
+              src={product.image}
+              alt={product.title}
+              className="h-full w-full object-contain p-3 transition-transform duration-200 group-hover:scale-[1.03]"
+              loading="lazy"
+            />
+          ) : (
+            <>
+              <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_30%_20%,rgb(64_96_208/0.12),transparent_55%)]" />
+              <Icon
+                className="relative size-14 text-accent/70 transition-transform duration-200 group-hover:scale-105"
+                strokeWidth={1.25}
+              />
+            </>
+          )}
           {product.compareAt ? (
             <span className="absolute left-3 top-3 rounded-full bg-sale px-2.5 py-0.5 text-xs font-semibold text-white">
               Save {formatPrice(product.compareAt - product.price)}

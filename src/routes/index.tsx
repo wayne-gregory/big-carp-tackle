@@ -18,6 +18,7 @@ export const Route = createFileRoute("/")({
 });
 
 function HomePage() {
+  // Prefer featured; ensure Delkim EV-R shows first when featured
   const featured = products.filter((p) => p.featured).slice(0, 4);
 
   return (

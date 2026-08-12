@@ -71,9 +71,19 @@ function ProductPage() {
 
       <section className="section-pad pt-8">
         <div className="container-page grid gap-10 lg:grid-cols-2">
-          <div className="card-surface relative flex min-h-72 items-center justify-center bg-bg-subtle p-10">
-            <div className="absolute inset-0 rounded-xl bg-[radial-gradient(ellipse_at_40%_30%,rgb(31_107_74/0.15),transparent_60%)]" />
-            <Package className="relative size-24 text-accent/50" strokeWidth={1} />
+          <div className="card-surface relative flex min-h-72 items-center justify-center overflow-hidden bg-bg-subtle p-6">
+            {product.image ? (
+              <img
+                src={product.image}
+                alt={product.title}
+                className="max-h-96 w-full object-contain"
+              />
+            ) : (
+              <>
+                <div className="absolute inset-0 rounded-xl bg-[radial-gradient(ellipse_at_40%_30%,rgb(64_96_208/0.15),transparent_60%)]" />
+                <Package className="relative size-24 text-accent/50" strokeWidth={1} />
+              </>
+            )}
             <span className="absolute left-4 top-4 rounded-full bg-bg-elevated px-3 py-1 text-xs font-semibold text-fg shadow-sm">
               {product.condition}
             </span>

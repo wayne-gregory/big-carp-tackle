@@ -54,9 +54,48 @@ export type Product = {
   stock: number;
   featured?: boolean;
   accent: string;
+  /** Optional product photo under /public */
+  image?: string;
 };
 
+const delkimEvrHighlights = [
+  "3 × Delkim EV-R bite alarms + receiver",
+  "Like new — barely used",
+  "All functions tested (LEDs, volume, tone, vibration)",
+  "Batteries included / freshly fitted",
+  "UK sale only",
+] as const;
+
+function delkimEvrListing(
+  n: 1 | 2 | 3 | 4,
+  location: string,
+): Product {
+  return {
+    id: `delkim-evr-${n}`,
+    slug: `delkim-ev-r-set-${n}`,
+    title: `Delkim EV-R — 3 heads + receiver (Set ${n})`,
+    brand: "Delkim",
+    category: "alarms",
+    price: 300,
+    compareAt: 450,
+    condition: "Excellent",
+    description:
+      "Delkim EV-R bite alarm set — three heads plus matching receiver. Like new condition with minimal bankside use. All heads respond cleanly, receiver pairs correctly, cosmetics near mint. Ideal as a ready-to-fish setup for UK carp venues.",
+    highlights: [...delkimEvrHighlights],
+    location,
+    stock: 1,
+    featured: n <= 2,
+    accent: "amber",
+    image: "/products/delkim-ev-r.jpg",
+  };
+}
+
 export const products: Product[] = [
+  // New Delkim EV-R stock (4 sets)
+  delkimEvrListing(1, "West Sussex"),
+  delkimEvrListing(2, "West Sussex"),
+  delkimEvrListing(3, "West Sussex"),
+  delkimEvrListing(4, "West Sussex"),
   {
     id: "p1",
     slug: "fox-horizon-x4-12ft-3lb",
@@ -120,7 +159,6 @@ export const products: Product[] = [
     ],
     location: "Essex",
     stock: 1,
-    featured: true,
     accent: "amber",
   },
   {
@@ -184,7 +222,6 @@ export const products: Product[] = [
     ],
     location: "Norfolk",
     stock: 1,
-    featured: true,
     accent: "stone",
   },
   {
