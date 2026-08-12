@@ -1,6 +1,6 @@
 export const shop = {
-  name: "Big Carp Tackle",
-  shortName: "BCT",
+  name: "Big Carp Fishing",
+  shortName: "BCF",
   domain: "bigcarpfishing.co.uk",
   tagline: "Quality second-hand carp tackle, UK only",
   description:
@@ -91,7 +91,6 @@ function delkimEvrListing(
 }
 
 export const products: Product[] = [
-  // New Delkim EV-R stock (4 sets)
   delkimEvrListing(1, "West Sussex"),
   delkimEvrListing(2, "West Sussex"),
   delkimEvrListing(3, "West Sussex"),
