@@ -11,13 +11,14 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AboutRouteImport } from './routes/about'
-import { Route as CaseStudiesRouteImport } from './routes/case-studies'
+import { Route as CartRouteImport } from './routes/cart'
+import { Route as CheckoutRouteImport } from './routes/checkout'
 import { Route as ContactRouteImport } from './routes/contact'
+import { Route as HowItWorksRouteImport } from './routes/how-it-works'
 import { Route as LoginRouteImport } from './routes/login'
-import { Route as Microsoft365RouteImport } from './routes/microsoft-365'
-import { Route as ServicesRouteImport } from './routes/services'
-import { Route as ZeroTrustRouteImport } from './routes/zero-trust'
-import { Route as ApiContactRouteImport } from './routes/api/contact'
+import { Route as SellRouteImport } from './routes/sell'
+import { Route as ShopRouteImport } from './routes/shop'
+import { Route as ProductSlugRouteImport } from './routes/product.$slug'
 import { Route as ApiAuthSplatRouteImport } from './routes/api/auth/$'
 
 const IndexRoute = IndexRouteImport.update({
@@ -30,9 +31,14 @@ const AboutRoute = AboutRouteImport.update({
   path: '/about',
   getParentRoute: () => rootRouteImport,
 } as any)
-const CaseStudiesRoute = CaseStudiesRouteImport.update({
-  id: '/case-studies',
-  path: '/case-studies',
+const CartRoute = CartRouteImport.update({
+  id: '/cart',
+  path: '/cart',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CheckoutRoute = CheckoutRouteImport.update({
+  id: '/checkout',
+  path: '/checkout',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ContactRoute = ContactRouteImport.update({
@@ -40,29 +46,29 @@ const ContactRoute = ContactRouteImport.update({
   path: '/contact',
   getParentRoute: () => rootRouteImport,
 } as any)
+const HowItWorksRoute = HowItWorksRouteImport.update({
+  id: '/how-it-works',
+  path: '/how-it-works',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const LoginRoute = LoginRouteImport.update({
   id: '/login',
   path: '/login',
   getParentRoute: () => rootRouteImport,
 } as any)
-const Microsoft365Route = Microsoft365RouteImport.update({
-  id: '/microsoft-365',
-  path: '/microsoft-365',
+const SellRoute = SellRouteImport.update({
+  id: '/sell',
+  path: '/sell',
   getParentRoute: () => rootRouteImport,
 } as any)
-const ServicesRoute = ServicesRouteImport.update({
-  id: '/services',
-  path: '/services',
+const ShopRoute = ShopRouteImport.update({
+  id: '/shop',
+  path: '/shop',
   getParentRoute: () => rootRouteImport,
 } as any)
-const ZeroTrustRoute = ZeroTrustRouteImport.update({
-  id: '/zero-trust',
-  path: '/zero-trust',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const ApiContactRoute = ApiContactRouteImport.update({
-  id: '/api/contact',
-  path: '/api/contact',
+const ProductSlugRoute = ProductSlugRouteImport.update({
+  id: '/product/$slug',
+  path: '/product/$slug',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ApiAuthSplatRoute = ApiAuthSplatRouteImport.update({
@@ -74,38 +80,41 @@ const ApiAuthSplatRoute = ApiAuthSplatRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
-  '/case-studies': typeof CaseStudiesRoute
+  '/cart': typeof CartRoute
+  '/checkout': typeof CheckoutRoute
   '/contact': typeof ContactRoute
+  '/how-it-works': typeof HowItWorksRoute
   '/login': typeof LoginRoute
-  '/microsoft-365': typeof Microsoft365Route
-  '/services': typeof ServicesRoute
-  '/zero-trust': typeof ZeroTrustRoute
-  '/api/contact': typeof ApiContactRoute
+  '/sell': typeof SellRoute
+  '/shop': typeof ShopRoute
+  '/product/$slug': typeof ProductSlugRoute
   '/api/auth/$': typeof ApiAuthSplatRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
-  '/case-studies': typeof CaseStudiesRoute
+  '/cart': typeof CartRoute
+  '/checkout': typeof CheckoutRoute
   '/contact': typeof ContactRoute
+  '/how-it-works': typeof HowItWorksRoute
   '/login': typeof LoginRoute
-  '/microsoft-365': typeof Microsoft365Route
-  '/services': typeof ServicesRoute
-  '/zero-trust': typeof ZeroTrustRoute
-  '/api/contact': typeof ApiContactRoute
+  '/sell': typeof SellRoute
+  '/shop': typeof ShopRoute
+  '/product/$slug': typeof ProductSlugRoute
   '/api/auth/$': typeof ApiAuthSplatRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
-  '/case-studies': typeof CaseStudiesRoute
+  '/cart': typeof CartRoute
+  '/checkout': typeof CheckoutRoute
   '/contact': typeof ContactRoute
+  '/how-it-works': typeof HowItWorksRoute
   '/login': typeof LoginRoute
-  '/microsoft-365': typeof Microsoft365Route
-  '/services': typeof ServicesRoute
-  '/zero-trust': typeof ZeroTrustRoute
-  '/api/contact': typeof ApiContactRoute
+  '/sell': typeof SellRoute
+  '/shop': typeof ShopRoute
+  '/product/$slug': typeof ProductSlugRoute
   '/api/auth/$': typeof ApiAuthSplatRoute
 }
 export interface FileRouteTypes {
@@ -113,50 +122,54 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/about'
-    | '/case-studies'
+    | '/cart'
+    | '/checkout'
     | '/contact'
+    | '/how-it-works'
     | '/login'
-    | '/microsoft-365'
-    | '/services'
-    | '/zero-trust'
-    | '/api/contact'
+    | '/sell'
+    | '/shop'
+    | '/product/$slug'
     | '/api/auth/$'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
     | '/about'
-    | '/case-studies'
+    | '/cart'
+    | '/checkout'
     | '/contact'
+    | '/how-it-works'
     | '/login'
-    | '/microsoft-365'
-    | '/services'
-    | '/zero-trust'
-    | '/api/contact'
+    | '/sell'
+    | '/shop'
+    | '/product/$slug'
     | '/api/auth/$'
   id:
     | '__root__'
     | '/'
     | '/about'
-    | '/case-studies'
+    | '/cart'
+    | '/checkout'
     | '/contact'
+    | '/how-it-works'
     | '/login'
-    | '/microsoft-365'
-    | '/services'
-    | '/zero-trust'
-    | '/api/contact'
+    | '/sell'
+    | '/shop'
+    | '/product/$slug'
     | '/api/auth/$'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
-  CaseStudiesRoute: typeof CaseStudiesRoute
+  CartRoute: typeof CartRoute
+  CheckoutRoute: typeof CheckoutRoute
   ContactRoute: typeof ContactRoute
+  HowItWorksRoute: typeof HowItWorksRoute
   LoginRoute: typeof LoginRoute
-  Microsoft365Route: typeof Microsoft365Route
-  ServicesRoute: typeof ServicesRoute
-  ZeroTrustRoute: typeof ZeroTrustRoute
-  ApiContactRoute: typeof ApiContactRoute
+  SellRoute: typeof SellRoute
+  ShopRoute: typeof ShopRoute
+  ProductSlugRoute: typeof ProductSlugRoute
   ApiAuthSplatRoute: typeof ApiAuthSplatRoute
 }
 
@@ -176,11 +189,18 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AboutRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/case-studies': {
-      id: '/case-studies'
-      path: '/case-studies'
-      fullPath: '/case-studies'
-      preLoaderRoute: typeof CaseStudiesRouteImport
+    '/cart': {
+      id: '/cart'
+      path: '/cart'
+      fullPath: '/cart'
+      preLoaderRoute: typeof CartRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/checkout': {
+      id: '/checkout'
+      path: '/checkout'
+      fullPath: '/checkout'
+      preLoaderRoute: typeof CheckoutRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/contact': {
@@ -190,6 +210,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ContactRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/how-it-works': {
+      id: '/how-it-works'
+      path: '/how-it-works'
+      fullPath: '/how-it-works'
+      preLoaderRoute: typeof HowItWorksRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/login': {
       id: '/login'
       path: '/login'
@@ -197,32 +224,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof LoginRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/microsoft-365': {
-      id: '/microsoft-365'
-      path: '/microsoft-365'
-      fullPath: '/microsoft-365'
-      preLoaderRoute: typeof Microsoft365RouteImport
+    '/sell': {
+      id: '/sell'
+      path: '/sell'
+      fullPath: '/sell'
+      preLoaderRoute: typeof SellRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/services': {
-      id: '/services'
-      path: '/services'
-      fullPath: '/services'
-      preLoaderRoute: typeof ServicesRouteImport
+    '/shop': {
+      id: '/shop'
+      path: '/shop'
+      fullPath: '/shop'
+      preLoaderRoute: typeof ShopRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/zero-trust': {
-      id: '/zero-trust'
-      path: '/zero-trust'
-      fullPath: '/zero-trust'
-      preLoaderRoute: typeof ZeroTrustRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/api/contact': {
-      id: '/api/contact'
-      path: '/api/contact'
-      fullPath: '/api/contact'
-      preLoaderRoute: typeof ApiContactRouteImport
+    '/product/$slug': {
+      id: '/product/$slug'
+      path: '/product/$slug'
+      fullPath: '/product/$slug'
+      preLoaderRoute: typeof ProductSlugRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/api/auth/$': {
@@ -238,13 +258,14 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
-  CaseStudiesRoute: CaseStudiesRoute,
+  CartRoute: CartRoute,
+  CheckoutRoute: CheckoutRoute,
   ContactRoute: ContactRoute,
+  HowItWorksRoute: HowItWorksRoute,
   LoginRoute: LoginRoute,
-  Microsoft365Route: Microsoft365Route,
-  ServicesRoute: ServicesRoute,
-  ZeroTrustRoute: ZeroTrustRoute,
-  ApiContactRoute: ApiContactRoute,
+  SellRoute: SellRoute,
+  ShopRoute: ShopRoute,
+  ProductSlugRoute: ProductSlugRoute,
   ApiAuthSplatRoute: ApiAuthSplatRoute,
 }
 export const routeTree = rootRouteImport

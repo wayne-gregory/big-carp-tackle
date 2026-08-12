@@ -1,128 +1,92 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { MapPin, Mail } from "lucide-react";
-import { SiteShell, PageHero } from "@/components/site/shell";
-import { ContactForm } from "@/components/site/contact-form";
-import { company } from "@/lib/company";
-import {
-  breadcrumbJsonLd,
-  coreKeywords,
-  jsonLdScript,
-  pageHead,
-} from "@/lib/seo";
+import { useForm } from "react-hook-form";
+import { z } from "zod";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { toast } from "sonner";
+import { PageHero, SiteShell } from "@/components/shop/shell";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { Textarea } from "@/components/ui/textarea";
+import { pageHead } from "@/lib/seo";
+import { shop } from "@/lib/shop";
+
+const schema = z.object({
+  name: z.string().min(2),
+  email: z.email(),
+  message: z.string().min(10, "Please write a short message"),
+});
+
+type FormValues = z.infer<typeof schema>;
 
 export const Route = createFileRoute("/contact")({
-  head: () => ({
-    ...pageHead({
-      title: "Book a consultation",
-      description:
-        "Book a consultation about performance, resilience, cloud, or Microsoft 365. InovaCore — West Sussex, working across the UK.",
+  head: () =>
+    pageHead({
+      title: `Contact | ${shop.name}`,
+      description: `Contact ${shop.name} about second-hand carp tackle orders or sales.`,
       path: "/contact",
-      keywords: [...coreKeywords, "book IT consultation", "infrastructure quote"],
     }),
-    scripts: [
-      jsonLdScript(
-        breadcrumbJsonLd([
-          { name: "Home", path: "/" },
-          { name: "Contact", path: "/contact" },
-        ]),
-      ),
-    ],
-  }),
   component: ContactPage,
 });
 
-const faqs = [
-  {
-    q: "What should I include in a first message?",
-    a: "Company size, what is painful (performance, cloud, backup, security, Microsoft 365), and whether you want a consultation or a quote. That is enough to start.",
-  },
-  {
-    q: "Do you only work with large enterprises?",
-    a: "No. We focus on growing businesses with more complex environments — including mid-market and Business Premium–scale Microsoft estates.",
-  },
-  {
-    q: "What do you typically help with?",
-    a: "Infrastructure & virtualisation, Azure/hybrid cloud, backup & DR, security & identity, automation, and Microsoft 365 Business Premium when it fits.",
-  },
-  {
-    q: "Can you work alongside an existing IT person or MSP?",
-    a: "Yes. Many clients need a specialist for infrastructure or cloud projects while keeping day-to-day support in place.",
-  },
-] as const;
-
 function ContactPage() {
+  const form = useForm<FormValues>({
+    resolver: zodResolver(schema),
+    defaultValues: { name: "", email: "", message: "" },
+  });
+
   return (
     <SiteShell>
       <PageHero
         eyebrow="Contact"
-        title="Talk about the outcomes you need"
-        description="Performance, resilience, cloud, or Microsoft 365 — book a consultation or request a quote. Clear next steps, no enterprise sales process."
+        title="Get in touch"
+        description="Orders, stock questions, or selling enquiries — we reply within 1–2 working days."
       />
-
-      <section className="section-pad">
-        <div className="container-page grid gap-10 lg:grid-cols-12 lg:gap-14">
-          <div className="space-y-8 lg:col-span-5">
-            <div>
-              <h2 className="font-display text-xl font-semibold text-ink">
-                Book a consultation
-              </h2>
-              <p className="mt-2 text-sm leading-relaxed text-fg-muted">
-                Tell us roughly how many people you have, what is in your
-                environment today, and what you want to improve. We will respond
-                with a clear next step.
-              </p>
-            </div>
-
-            <div className="space-y-4">
-              <a
-                href={`mailto:${company.email}`}
-                className="flex items-start gap-3 rounded-xl border border-border bg-bg-elevated p-4 shadow-soft transition-colors hover:border-accent/40"
-              >
-                <Mail className="mt-0.5 size-5 shrink-0 text-accent" />
-                <div>
-                  <p className="text-sm font-semibold text-ink">Email</p>
-                  <p className="mt-0.5 break-all text-sm text-fg-muted">
-                    {company.email}
-                  </p>
-                </div>
-              </a>
-
-              {company.offices.map((o) => (
-                <div
-                  key={o.label}
-                  className="flex items-start gap-3 rounded-xl border border-border bg-bg-elevated p-4 shadow-soft"
-                >
-                  <MapPin className="mt-0.5 size-5 shrink-0 text-accent" />
-                  <div>
-                    <p className="text-sm font-semibold text-ink">{o.label}</p>
-                    <p className="mt-0.5 text-sm text-fg-muted">{o.address}</p>
-                  </div>
-                </div>
-              ))}
-            </div>
+      <section className="section-pad pt-8">
+        <div className="container-page grid gap-10 lg:grid-cols-12">
+          <div className="lg:col-span-4">
+            <p className="text-sm text-fg-muted">Email</p>
+            <a
+              href={`mailto:${shop.email}`}
+              className="mt-1 block break-all font-medium text-accent"
+            >
+              {shop.email}
+            </a>
+            <p className="mt-6 text-sm text-fg-muted">Region</p>
+            <p className="mt-1 font-medium text-fg">{shop.region}</p>
+            <p className="mt-6 text-sm text-fg-muted">Shipping</p>
+            <p className="mt-1 text-sm text-fg">{shop.shippingNote}</p>
           </div>
-
-          <div className="lg:col-span-7">
-            <ContactForm />
-          </div>
-        </div>
-      </section>
-
-      <section className="section-pad border-t border-border bg-bg-elevated">
-        <div className="container-page max-w-3xl">
-          <h2 className="font-display text-2xl font-semibold tracking-tight text-ink">
-            Frequently asked questions
-          </h2>
-          <dl className="mt-8 space-y-6">
-            {faqs.map((f) => (
-              <div key={f.q} className="border-b border-border pb-6">
-                <dt className="font-semibold text-ink">{f.q}</dt>
-                <dd className="mt-2 text-sm leading-relaxed text-fg-muted">
-                  {f.a}
-                </dd>
+          <form
+            className="card-surface space-y-4 p-6 lg:col-span-8"
+            onSubmit={form.handleSubmit(() => {
+              toast.success("Message sent");
+              form.reset();
+            })}
+          >
+            <div className="grid gap-4 sm:grid-cols-2">
+              <div className="space-y-1.5">
+                <Label>Name</Label>
+                <Input {...form.register("name")} />
               </div>
-            ))}
-          </dl>
+              <div className="space-y-1.5">
+                <Label>Email</Label>
+                <Input type="email" {...form.register("email")} />
+              </div>
+            </div>
+            <div className="space-y-1.5">
+              <Label>Message</Label>
+              <Textarea rows={5} {...form.register("message")} />
+              {form.formState.errors.message ? (
+                <p className="text-xs text-sale">
+                  {form.formState.errors.message.message}
+                </p>
+              ) : null}
+            </div>
+            <Button type="submit" size="lg">
+              Send message
+            </Button>
+          </form>
         </div>
       </section>
     </SiteShell>

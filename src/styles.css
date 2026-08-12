@@ -2,106 +2,84 @@
 @import "tw-animate-css";
 
 /*
-  InovaCore design tokens (Tailwind v4 @theme)
-  -------------------------------------------
-  Brand: logo cyan → deep blue on navy ink.
-  Surfaces: cool light grey page, white cards, navy heroes/footer.
-  Change colours here only — components should use semantic classes.
+  Big Carp Tackle (BCT) brand tokens
+  Logo pack: deep navy + electric blue/purple (color1)
+  Display: Bebas Neue (from brand fonts)
 */
 
-@theme {
-  /* --- Surfaces (light app chrome) --- */
-  --color-bg: #f0f5fa;
-  --color-bg-elevated: #ffffff;
-  --color-bg-subtle: #e4edf6;
-
-  /* --- Text on light --- */
-  --color-fg: #1e293b;
-  --color-fg-muted: #475569;
-  --color-fg-subtle: #64748b;
-
-  /* --- Borders --- */
-  --color-border: #d1dbe8;
-  --color-border-strong: #b6c4d6;
-
-  /* --- Brand accent (buttons, links, icons) --- */
-  --color-accent: #0c6099;
-  --color-accent-hover: #094d7a;
-  --color-accent-fg: #ffffff;
-  --color-ring: #0c6099;
-
-  /* --- Dark brand surfaces (hero, header top, footer) --- */
-  --color-ink: #0b0628;
-  --color-ink-elevated: #120a38;
-  --color-ink-border: rgb(255 255 255 / 0.12);
-
-  /* --- Text / accents on dark --- */
-  --color-on-ink: #ffffff;
-  --color-on-ink-muted: rgb(255 255 255 / 0.75);
-  --color-on-ink-subtle: rgb(255 255 255 / 0.55);
-  --color-on-ink-accent: #7dd3fc; /* sky-300-ish for eyebrows on dark */
-
-  /* --- Logo cyan (highlights, glows) --- */
-  --color-brand-cyan: #34ecf6;
-  --color-brand-glow: rgb(4 107 210 / 0.45);
-
-  /* --- Typography --- */
-  --font-display: "Plus Jakarta Sans", "DM Sans", ui-sans-serif, system-ui,
-    sans-serif;
-  --font-sans: "DM Sans", ui-sans-serif, system-ui, -apple-system, sans-serif;
-
-  /* --- Radius --- */
-  --radius-sm: 0.5rem;
-  --radius-md: 0.75rem;
-  --radius-lg: 1rem;
-  --radius-xl: 1.5rem;
-
-  /* --- Elevation --- */
-  --shadow-soft: 0 1px 2px rgb(11 6 40 / 0.04),
-    0 10px 28px rgb(11 6 40 / 0.06);
-  --shadow-hero: 0 25px 50px -12px rgb(11 6 40 / 0.45);
+@font-face {
+  font-family: "Bebas Neue";
+  src: url("/fonts/BebasNeue-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
 }
 
-/* Raw CSS variables for non-Tailwind use (gradients, mix, etc.) */
-:root {
-  --hero-glow: radial-gradient(
-    ellipse 80% 60% at 70% 40%,
-    var(--color-brand-glow),
-    transparent 60%
-  );
-  --header-dark-bg: color-mix(in oklab, var(--color-ink) 85%, transparent);
-  --header-light-bg: color-mix(
-    in oklab,
-    var(--color-bg-elevated) 95%,
-    transparent
-  );
+@font-face {
+  font-family: "Bebas Neue";
+  src: url("/fonts/BebasNeue-Bold.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@theme {
+  --color-bg: #f3f4f8;
+  --color-bg-elevated: #ffffff;
+  --color-bg-subtle: #e6e8f0;
+
+  --color-fg: #12162e;
+  --color-fg-muted: #454b66;
+  --color-fg-subtle: #6b718c;
+
+  --color-border: #d0d4e2;
+  --color-border-strong: #b0b6cc;
+
+  /* Color1 electric blue from logo pack */
+  --color-accent: #4060d0;
+  --color-accent-hover: #324db0;
+  --color-accent-fg: #ffffff;
+  --color-ring: #6880e0;
+
+  /* Deep navy ink (logo-basic background) */
+  --color-ink: #101840;
+  --color-ink-elevated: #182050;
+  --color-ink-border: rgb(255 255 255 / 0.12);
+
+  --color-on-ink: #f5f6fb;
+  --color-on-ink-muted: rgb(245 246 251 / 0.78);
+  --color-on-ink-subtle: rgb(245 246 251 / 0.55);
+  --color-on-ink-accent: #a0b0f0;
+
+  --color-warn: #b45309;
+  --color-sale: #c2410c;
+
+  --font-display: "Bebas Neue", "Impact", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: "Source Sans 3", ui-sans-serif, system-ui, sans-serif;
+
+  --radius-sm: 0.375rem;
+  --radius-md: 0.625rem;
+  --radius-lg: 0.875rem;
+  --radius-xl: 1.25rem;
+
+  --shadow-soft: 0 1px 2px rgb(16 24 64 / 0.06),
+    0 12px 28px rgb(16 24 64 / 0.08);
+  --shadow-hero: 0 24px 48px -12px rgb(16 24 64 / 0.55);
 }
 
 @layer base {
-  html {
-    scroll-behavior: smooth;
-    overflow-x: hidden;
+  * {
+    border-color: var(--color-border);
   }
 
-  @media (prefers-reduced-motion: reduce) {
-    html {
-      scroll-behavior: auto;
-    }
-
-    *,
-    *::before,
-    *::after {
-      animation-duration: 0.01ms !important;
-      animation-iteration-count: 1 !important;
-      transition-duration: 0.01ms !important;
-    }
+  html {
+    scroll-behavior: smooth;
   }
 
   body {
     @apply bg-bg text-fg font-sans antialiased;
-    font-feature-settings: "ss01" on, "cv11" on;
-    line-height: 1.55;
     overflow-x: hidden;
+    line-height: 1.55;
   }
 
   button:not(:disabled),
@@ -109,75 +87,46 @@
     cursor: pointer;
   }
 
-  ::selection {
-    background: color-mix(in oklab, var(--color-accent) 22%, transparent);
-  }
-}
-
-@layer components {
-  /* Page shell width */
-  .container-page {
-    @apply mx-auto w-full max-w-6xl px-5 sm:px-8;
-  }
-
-  .section-pad {
-    @apply py-16 sm:py-24;
-  }
-
-  /*
-    Dark brand band — homepage hero, PageHero, footer-adjacent CTAs.
-    Keeps navy + glow consistent without per-page hardcoded rgba.
-  */
-  .surface-ink {
-    @apply relative overflow-hidden bg-ink text-on-ink;
-  }
-
-  .surface-ink::before {
-    content: "";
-    pointer-events: none;
-    position: absolute;
-    inset: 0;
-    opacity: 0.4;
-    background: var(--hero-glow);
-  }
-
-  .surface-ink > * {
-    position: relative;
-  }
-
-  .surface-ink-eyebrow {
-    @apply mb-3 text-xs font-semibold uppercase tracking-[0.16em] text-on-ink-accent;
-  }
-
-  .surface-ink-title {
-    @apply max-w-3xl font-display font-semibold tracking-tight text-balance text-on-ink;
-  }
-
-  .surface-ink-body {
-    @apply mt-4 max-w-2xl text-base leading-relaxed text-on-ink-muted sm:text-lg;
-  }
-
-  /* Alternating light sections */
-  .surface-page {
-    @apply bg-bg text-fg;
-  }
-
-  .surface-elevated {
-    @apply bg-bg-elevated text-fg;
-  }
-
-  .surface-subtle {
-    @apply bg-bg-subtle text-fg;
-  }
-
-  /* Cards on light backgrounds */
-  .card-surface {
-    @apply rounded-xl border border-border bg-bg-elevated shadow-soft;
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-display);
+    letter-spacing: 0.02em;
+    line-height: 1.1;
+    font-weight: 400;
+    text-transform: uppercase;
   }
 }
 
 @layer utilities {
+  .container-page {
+    @apply mx-auto w-full max-w-6xl px-4 sm:px-6 lg:px-8;
+  }
+
+  .section-pad {
+    @apply py-14 sm:py-16 lg:py-20;
+  }
+
+  .card-surface {
+    @apply rounded-xl border border-border bg-bg-elevated shadow-soft;
+  }
+
+  .surface-ink {
+    @apply bg-ink text-on-ink;
+  }
+
   .text-balance {
     text-wrap: balance;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
   }
 }

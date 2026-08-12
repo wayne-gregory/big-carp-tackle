@@ -1,16 +1,16 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
+import { Fish } from "lucide-react";
 import { GROK_PROVIDERS, authEnabled, signIn } from "@/lib/auth/client";
 import { Button } from "@/components/ui/button";
-import { Logo } from "@/components/site/logo";
 import { pageHead } from "@/lib/seo";
+import { shop } from "@/lib/shop";
 
 export const Route = createFileRoute("/login")({
   head: () =>
     pageHead({
-      title: "Sign in",
-      description: "Sign in to InovaCore client access.",
+      title: `Sign in | ${shop.name}`,
+      description: "Account sign-in.",
       path: "/login",
-      index: false,
     }),
   component: Login,
 });
@@ -21,13 +21,13 @@ function Login() {
       <div className="w-full max-w-sm space-y-6 rounded-xl border border-border bg-bg-elevated p-8 shadow-soft">
         <div className="space-y-4 text-center">
           <div className="flex justify-center">
-            <Logo heightClass="h-10" />
+            <span className="inline-flex size-12 items-center justify-center rounded-md bg-accent text-accent-fg">
+              <Fish className="size-6" />
+            </span>
           </div>
-          <h1 className="font-display text-2xl font-semibold text-ink">
-            Sign in
-          </h1>
+          <h1 className="font-display text-2xl font-semibold text-fg">Sign in</h1>
           <p className="text-sm text-fg-muted">
-            Access client materials and project updates.
+            Optional account access for {shop.name}.
           </p>
         </div>
 
@@ -39,26 +39,21 @@ function Login() {
                 type="button"
                 variant="secondary"
                 className="w-full"
-                onClick={() => signIn(p.providerId, { callbackURL: "/" })}
+                onClick={() => void signIn(p.providerId)}
               >
-                Continue with {p.label}
+                Continue with {p.providerId}
               </Button>
             ))}
           </div>
         ) : (
           <p className="text-center text-sm text-fg-muted">
-            Sign-in is currently disabled.
+            Sign-in is not configured. You can still shop without an account.
           </p>
         )}
 
-        <p className="text-center text-sm text-fg-subtle">
-          <Link
-            to="/"
-            className="text-fg-muted underline-offset-4 hover:underline"
-          >
-            Back to home
-          </Link>
-        </p>
+        <Button asChild variant="ghost" className="w-full">
+          <Link to="/">Back to shop</Link>
+        </Button>
       </div>
     </main>
   );
