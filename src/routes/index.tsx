@@ -16,7 +16,7 @@ import { categories, products, shop } from "@/lib/shop";
 export const Route = createFileRoute("/")({
   head: () =>
     pageHead({
-      title: `${shop.name} | Second-hand carp tackle UK`,
+      title: `${shop.name} | Second hand carp fishing tackle UK`,
       description: shop.description,
       path: "/",
     }),
@@ -50,14 +50,15 @@ function HomePage() {
               />
             </div>
             <p className="text-xs font-semibold uppercase tracking-[0.18em] text-on-ink-accent">
-              UK second-hand carp tackle · {shop.shortName}
+              Second hand carp fishing tackle · UK only · {shop.shortName}
             </p>
             <h1 className="mt-4 font-display text-5xl leading-none tracking-wide text-on-ink sm:text-6xl lg:text-7xl">
-              Quality gear for the bank
+              Second hand carp fishing tackle
             </h1>
             <p className="mt-5 max-w-xl font-sans text-base leading-relaxed tracking-normal text-on-ink-muted sm:text-lg">
-              Pre-owned carp tackle with honest condition grades and fair prices.
-              Rods, reels, alarms, bags and more — shipping across mainland Britain.
+              Quality pre-owned carp gear with honest condition grades and fair
+              prices. Rods, reels, alarms, bags and more — buy and sell second
+              hand carp fishing tackle across mainland Britain.
             </p>
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
               <Button asChild size="lg">
@@ -85,7 +86,7 @@ function HomePage() {
             {
               icon: BadgeCheck,
               title: "Checked condition",
-              body: "Every listing graded Excellent to Fair with honest notes.",
+              body: "Every second hand listing graded Excellent to Fair with honest notes.",
             },
             {
               icon: MapPin,
@@ -95,7 +96,7 @@ function HomePage() {
             {
               icon: RefreshCw,
               title: "Buy or sell",
-              body: "Clear out the garage — we take quality carp gear all year.",
+              body: "Clear out the garage — we take quality carp fishing tackle all year.",
             },
           ].map((item) => (
             <div key={item.title} className="flex gap-3">
@@ -117,8 +118,12 @@ function HomePage() {
                 Featured
               </p>
               <h2 className="mt-2 font-display text-4xl tracking-wide text-fg">
-                Fresh on the racks
+                Fresh second hand stock
               </h2>
+              <p className="mt-2 max-w-xl font-sans text-fg-muted">
+                Hand-checked second hand carp fishing tackle ready for UK
+                venues.
+              </p>
             </div>
             <Button asChild variant="secondary">
               <Link to="/shop">
@@ -141,8 +146,8 @@ function HomePage() {
             Shop by category
           </h2>
           <p className="mt-2 max-w-xl font-sans text-fg-muted">
-            From big pits to bedchairs — browse the kit that actually gets used
-            on UK venues.
+            From big pits to bedchairs — browse the second hand carp tackle that
+            actually gets used on UK waters.
           </p>
           <div className="mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
             {categories.map((c) => (
@@ -174,8 +179,8 @@ function HomePage() {
                 Turn unused tackle into bank space
               </h2>
               <p className="mt-3 font-sans text-sm leading-relaxed text-on-ink-muted sm:text-base">
-                Send photos and a short description. We offer a fair buy-in or
-                list on your behalf with transparent fees.
+                Send photos and a short description. We buy or list second hand
+                carp fishing tackle with transparent fees.
               </p>
               <Button asChild size="lg" className="mt-6">
                 <Link to="/sell">

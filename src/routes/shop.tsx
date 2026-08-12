@@ -1,4 +1,4 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { createFileRoute } from "@tanstack/react-router";
 import { z } from "zod";
 import { ProductCard } from "@/components/shop/product-card";
 import { PageHero, SiteShell } from "@/components/shop/shell";
@@ -34,14 +34,14 @@ export const Route = createFileRoute("/shop")({
   validateSearch: searchSchema,
   head: () =>
     pageHead({
-      title: `Shop second-hand carp tackle | ${shop.name}`,
+      title: `Second hand carp fishing tackle | Shop | ${shop.name}`,
       description:
-        "Browse pre-owned carp rods, reels, alarms, bags and more. UK shipping only. Honest condition grades.",
+        "Browse second hand carp fishing tackle for sale in the UK — pre-owned rods, reels, alarms, bags and more. Honest grades, fair prices, mainland shipping.",
       path: "/shop",
       scripts: [
         jsonLdScript(
           itemListJsonLd(products, {
-            name: "Second-hand carp tackle",
+            name: "Second hand carp fishing tackle",
             path: "/shop",
           }),
         ),
@@ -69,12 +69,21 @@ function ShopPage() {
     <SiteShell>
       <PageHero
         eyebrow="Shop"
-        title="Second-hand carp tackle"
-        description="Honest grades, fair UK prices. Filter by category or search brand and model."
+        title="Second hand carp fishing tackle"
+        description="Pre-owned carp gear for UK anglers — honest grades, fair prices. Filter by category or search brand and model."
       />
 
       <section className="section-pad pt-0">
         <div className="container-page">
+          <p className="mb-6 max-w-3xl text-sm leading-relaxed text-fg-muted sm:text-base">
+            Looking for{" "}
+            <strong className="font-semibold text-fg">
+              second hand carp fishing tackle
+            </strong>
+            ? Browse checked used rods, reels, bite alarms, luggage and more —
+            all listed for sale in the United Kingdom only.
+          </p>
+
           <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
             <div className="flex flex-wrap gap-2">
               <FilterChip

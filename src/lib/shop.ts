@@ -4,9 +4,9 @@ export const shop = {
   name: "Big Carp Fishing",
   shortName: "BCF",
   domain: "bigcarpfishing.co.uk",
-  tagline: "Quality second-hand carp tackle, UK only",
+  tagline: "Second hand carp fishing tackle, UK only",
   description:
-    "Buy and sell quality pre-owned carp tackle across the United Kingdom — rods, reels, alarms, bags and more, checked and ready for the bank.",
+    "Buy and sell second hand carp fishing tackle across the United Kingdom — pre-owned rods, reels, alarms, bags and more, checked and ready for the bank.",
   email: "hello@bigcarpfishing.co.uk",
   region: "United Kingdom",
   shippingNote:
